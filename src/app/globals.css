@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-purple: #9267a0;
+  --color-gold: #b87a08;
+  --color-dark-gray: #333333;
+  --color-light-gray: #999999;
+  --color-background: #f2f2f2;
+  --color-yellow: #f4b400;
+  --color-light-yellow: #fff9e5;
+  --color-black: #000000;
+  --color-white: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
