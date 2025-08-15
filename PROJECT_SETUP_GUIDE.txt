@@ -1,0 +1,170 @@
+BIDBUY FRONTEND - TEAM SETUP GUIDE
+
+QUICK START - GET UP AND RUNNING IN 5 MINUTES
+
+1. CLONE AND SETUP
+Open your terminal and run these commands:
+
+git clone [your-repo-url]
+cd Bidbuy-Frontend
+npm install
+npm run dev
+
+Open http://localhost:3000 in your browser and you're ready to go!
+
+2. PROJECT STRUCTURE - WHAT YOU NEED TO KNOW
+
+Your project is organized like this:
+
+src/
+├── app/
+│   ├── globals.css          ← ALL YOUR COLORS AND STYLES HERE
+│   └── page.js             ← MAIN HOME PAGE (All Sections are imported already)
+├── components/
+│   ├── Home/               ← ALL HOME PAGE SECTIONS
+│   │   ├── NavBar.js       ← Navigation bar
+│   │   ├── Hero.js         ← Hero section
+│   │   ├── HowItWorks.js   ← How it works section
+│   │   ├── WhoIsItFor.js   ← Target audience section
+│   │   ├── Testimonial.js  ← Customer testimonials
+│   │   ├── FAQ.js          ← Frequently asked questions
+│   │   ├── Contact.js      ← Contact section
+│   │   ├── GetStarted.js   ← Call-to-action section
+│   │   └── Footer.js       ← Footer
+│   └── UI/                 ← REUSABLE UI COMPONENTS
+│       ├── Button.js       ← Custom button component
+│       ├── Input.js        ← Custom input component
+│       └── Logo.js         ← Logo component
+
+COLOR SYSTEM - USE THESE EVERYWHERE
+
+In globals.css we have defined CSS variables for consistent colors:
+
+Primary Colors:
+--color-primary-purple: #9267a0    ← Main brand color
+--color-primary-gold: #b87a08      ← Secondary brand color
+
+Text Colors:
+--color-text-title: #333333        ← Main text color
+--color-secondary-text: #999999    ← Lighter text color
+
+Background Colors:
+--color-background-card: #f2f2f2   ← Card backgrounds
+--color-background-color: #fcfcfc  ← Main page background
+--color-input-background: #d9d9d95c ← Input field backgrounds
+
+Accent Colors:
+--color-accent-yellow: #f4b400     ← Accent/highlight color
+--color-accent-light-yellow: #fff9e5 ← Light accent
+
+HOW TO USE COLORS IN YOUR CODE:
+
+Instead of hardcoding colors, use the predefined Tailwind color classes:
+
+CORRECT (Tailwind color classes):
+bg-primary-purple
+text-primary-gold
+bg-background-card
+text-text-title
+text-secondary-text
+bg-accent-yellow
+
+WRONG:
+background-color: #9267a0;  ← Don't hardcode colors!
+bg-[#9267a0]  ← Don't use hex codes directly!
+
+UI COMPONENTS - READY TO USE
+
+Button Component
+Location: /src/components/UI/Button.js
+
+Usage Examples:
+import Button from "../UI/Button";
+
+// Primary button
+<Button variant="primary" radius="full">Click Me</Button>
+
+// Secondary button
+<Button variant="secondary" radius="lg">Secondary</Button>
+
+// With icon from react icons
+<Button variant="primary" hasIcon={<IconName />}>Button with Icon</Button>
+
+Button Properties:
+- variant: "primary" or "secondary"
+- radius: "none", "sm", "md", "lg", "xl", or "full"
+- hasIcon: Import icon from react icons and use like the example above
+- onClick: click handler function
+
+Input Component
+Location: /src/components/UI/Input.js
+
+Usage Examples:
+import Input from "../UI/Input";
+
+<Input 
+  label="Email Address" 
+  placeholder="Enter your email"
+  inputStyle="w-full"
+/>
+
+Toast Notifications (react-toastify)
+Already set up and ready to use! Show success, error, or info messages to users.
+
+Usage Examples:
+import { toast } from "react-toastify";
+
+// Success toast
+toast.success("✅ Success message!");
+
+// Error toast
+toast.error("❌ Error message!");
+
+// Info toast
+toast.info("ℹ️ Info message!");
+
+// Custom toast
+toast("🦄 Custom message!");
+
+// In a button click
+<Button onClick={() => toast.success("Button clicked!")}>
+  Click Me
+</Button>
+
+HOME PAGE SECTIONS - WHAT TO WORK ON
+
+DEVELOPMENT WORKFLOW
+
+1. Pick your Section to Work On
+Choose any component from /src/components/Home/
+Each section is independent so you can work on any one you're assigned to
+
+2. Use the Design System
+Always use the color variables defined above
+Use the Button and Input components we've created
+Follow the existing patterns for consistency
+
+3. Testing Your Work
+Run this command to see your changes:
+npm run dev
+
+Navigate to http://localhost:3000 to see your changes live
+
+TROUBLESHOOTING
+
+If colors don't work:
+- Make sure you're using the color variables: --color-primary-purple
+- Check that globals.css is imported in your layout
+
+If components break:
+- You don't need to touch the src/app/page.js - All components are imported there already
+- Make sure you're importing components correctly
+- Check that all props are being passed correctly
+
+YOU'RE READY TO START!
+
+Pick your assigned section from the Home folder and start building. The structure is all set up - you just need to add the content and styling!
+
+Remember: We're building a bidding platform, so think about buyers, shoppers, and the marketplace experience.
+
+Happy coding! 🚀
