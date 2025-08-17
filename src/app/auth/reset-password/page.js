@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ResetPassword from "../../../components/Auth/ResetPassword";
-import AuthLayout from "../../../components/Auth/auth-layout";
+import  from "../../../components/Auth/auth-layout";
 import { toast } from "react-toastify";
 
 export default function ResetPasswordPage() {
@@ -42,12 +42,12 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <AuthLayout>
+    <>
       <ResetPassword
         formData={formData}
         onFormDataChange={handleFormDataChange}
         onSubmit={handleSubmit}
       />
-    </AuthLayout>
+    </>
   );
 }

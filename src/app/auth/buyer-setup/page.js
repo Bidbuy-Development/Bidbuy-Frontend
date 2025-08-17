@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import AuthLayout from "../../../components/Auth/auth-layout";
 import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
 import CategorySelection from "../../../components/Auth/Buyer/BuyerCategorySelection";
 import Welcome from "@/components/Auth/Welcome";
@@ -40,7 +39,7 @@ export default function BuyerSetupPage() {
   };
 
   return (
-    <AuthLayout>
+    <>
       {currentStep === 1 ? (
         <BuyerAccountSetup
           formData={setupData}
@@ -52,6 +51,6 @@ export default function BuyerSetupPage() {
       ) : (
         <Welcome onContinue={handleWelcomeContinue} />
       )}
-    </AuthLayout>
+    </>
   );
 }

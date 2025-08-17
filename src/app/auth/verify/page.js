@@ -2,14 +2,13 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Verify from "../../../components/Auth/Verify";
-import AuthLayout from "../../../components/Auth/auth-layout";
 import { toast } from "react-toastify";
 
 export default function VerifyPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const type = searchParams.get("type") || "verification"; 
-  const role = searchParams.get("role"); 
+  const type = searchParams.get("type") || "verification";
+  const role = searchParams.get("role");
   const email = searchParams.get("email");
 
   const handleNext = () => {
@@ -42,13 +41,6 @@ export default function VerifyPage() {
   };
 
   return (
-    <AuthLayout>
-      <Verify
-        email={email}
-        onNext={handleNext}
-        onPrev={handlePrev}
-        type={type}
-      />
-    </AuthLayout>
+    <Verify email={email} onNext={handleNext} onPrev={handlePrev} type={type} />
   );
 }

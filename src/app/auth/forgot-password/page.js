@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ForgetPassword from "../../../components/Auth/ForgetPassword";
-import AuthLayout from "../../../components/Auth/auth-layout";
+import  from "../../../components/Auth/auth-layout";
 
 export default function ForgotPasswordPage() {
   const [formData, setFormData] = useState({
@@ -22,12 +22,12 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <AuthLayout>
+    <>
       <ForgetPassword
         formData={formData}
         onFormDataChange={handleFormDataChange}
         onSubmit={handleSubmit}
       />
-    </AuthLayout>
+    </>
   );
 }

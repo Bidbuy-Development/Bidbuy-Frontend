@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import AuthLayout from "../../../components/Auth/auth-layout";
 import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
 import ShopperKyc from "../../../components/Auth/Shopper/ShopperKyc";
 import Welcome from "@/components/Auth/Welcome";
@@ -28,7 +27,7 @@ export default function BuyerSetupPage() {
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2); 
+    setCurrentStep(2);
   };
 
   const handleKycComplete = () => {
@@ -37,7 +36,7 @@ export default function BuyerSetupPage() {
   };
 
   const handleWelcomeContinue = () => {
-    router.push("/"); 
+    router.push("/");
   };
 
   const handlePrevFromKyc = () => {
@@ -45,7 +44,7 @@ export default function BuyerSetupPage() {
   };
 
   return (
-    <AuthLayout>
+    <>
       {currentStep === 1 ? (
         <BuyerAccountSetup
           formData={setupData}
@@ -53,13 +52,10 @@ export default function BuyerSetupPage() {
           onSubmit={handleAccountSetupSubmit}
         />
       ) : currentStep === 2 ? (
-        <ShopperKyc 
-          onNext={handleKycComplete}
-          onPrev={handlePrevFromKyc}
-        />
+        <ShopperKyc onNext={handleKycComplete} onPrev={handlePrevFromKyc} />
       ) : (
         <Welcome onContinue={handleWelcomeContinue} />
       )}
-    </AuthLayout>
+    </>
   );
 }

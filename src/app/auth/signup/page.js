@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import AuthLayout from "../../../components/Auth/auth-layout";
 import GetStarted from "../../../components/Auth/GetStarted";
 import BuyerSignupForm from "../../../components/Auth/Buyer/BuyerSignupForm";
 import ShopperSignupForm from "../../../components/Auth/Shopper/ShopperSignupForm";
@@ -75,17 +74,13 @@ export default function SignupPage() {
     return null;
   };
 
-  return (
-    <AuthLayout>
-      {currentStep === 1 ? (
-        <GetStarted
-          selectedRole={selectedRole}
-          onRoleSelect={handleRoleSelect}
-          onProceed={handleProceedToForm}
-        />
-      ) : (
-        renderSignupForm()
-      )}
-    </AuthLayout>
+  return currentStep === 1 ? (
+    <GetStarted
+      selectedRole={selectedRole}
+      onRoleSelect={handleRoleSelect}
+      onProceed={handleProceedToForm}
+    />
+  ) : (
+    renderSignupForm()
   );
 }

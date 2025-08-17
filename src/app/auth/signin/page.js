@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import AuthLayout from "../../../components/Auth/auth-layout";
 import SigninForm from "../../../components/Auth/SigninForm";
 import { toast } from "react-toastify";
 
@@ -20,12 +19,10 @@ export default function LoginPage() {
   };
 
   return (
-    <AuthLayout>
-      <SigninForm
-        formData={formData}
-        onFormDataChange={handleInputChange}
-        onSubmit={handleSubmit}
-      />
-    </AuthLayout>
+    <SigninForm
+      formData={formData}
+      onFormDataChange={handleInputChange}
+      onSubmit={handleSubmit}
+    />
   );
 }
