@@ -2,6 +2,7 @@
 import { useState } from "react";
 import AuthLayout from "../../../components/Auth/auth-layout";
 import SigninForm from "../../../components/Auth/SigninForm";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Login works!");
+    toast.success("Login successful!");
   };
 
   return (

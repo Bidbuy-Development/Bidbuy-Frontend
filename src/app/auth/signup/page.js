@@ -1,17 +1,22 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import AuthLayout from "../../../components/Auth/auth-layout";
 import GetStarted from "../../../components/Auth/GetStarted";
-import SignupForm from "../../../components/Auth/SignupForm";
+import BuyerSignupForm from "../../../components/Auth/Buyer/BuyerSignupForm";
+import ShopperSignupForm from "../../../components/Auth/Shopper/ShopperSignupForm";
+import { toast } from "react-toastify";
 
 export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedRole, setSelectedRole] = useState("");
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    category: "",
+    fullName: "",
     email: "",
     password: "",
     confirmPassword: "",
+    role: "",
   });
 
   const handleInputChange = (newFormData) => {
@@ -20,7 +25,13 @@ export default function SignupPage() {
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
-    setFormData((prev) => ({ ...prev, category: role }));
+    setFormData({
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      role: role,
+    });
   };
 
   const handleProceedToForm = () => {
@@ -29,17 +40,39 @@ export default function SignupPage() {
     }
   };
 
-  const handleBackToRoleSelection = () => {
-    setCurrentStep(1);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
-    alert("Signup works!");
+
+    router.push(
+      `/auth/verify?type=signup&role=${selectedRole}&email=${encodeURIComponent(
+        formData.email
+      )}`
+    );
+  };
+
+  const renderSignupForm = () => {
+    if (selectedRole === "buyer") {
+      return (
+        <BuyerSignupForm
+          formData={formData}
+          onFormDataChange={handleInputChange}
+          onSubmit={handleSubmit}
+        />
+      );
+    } else if (selectedRole === "shopper") {
+      return (
+        <ShopperSignupForm
+          formData={formData}
+          onFormDataChange={handleInputChange}
+          onSubmit={handleSubmit}
+        />
+      );
+    }
+    return null;
   };
 
   return (
@@ -51,13 +84,7 @@ export default function SignupPage() {
           onProceed={handleProceedToForm}
         />
       ) : (
-        <SignupForm
-          selectedRole={selectedRole}
-          formData={formData}
-          onFormDataChange={handleInputChange}
-          onBackToRoleSelection={handleBackToRoleSelection}
-          onSubmit={handleSubmit}
-        />
+        renderSignupForm()
       )}
     </AuthLayout>
   );

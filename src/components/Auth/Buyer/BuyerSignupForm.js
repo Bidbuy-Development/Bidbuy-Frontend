@@ -3,11 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function SignupForm({
-  selectedRole,
+export default function BuyerSignupForm({
   formData,
   onFormDataChange,
-  onBackToRoleSelection,
   onSubmit,
 }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,9 +21,11 @@ export default function SignupForm({
   return (
     <div className="space-y-6">
       {/* Header with back option */}
-      <div className="text-left">
-        <h2 className="text-4xl font-bold text-primary-purple mb-2">Sign Up</h2>
-        <p className="text-[#2B2B2B]">Create a new account</p>
+      <div className="text-center">
+        <h2 className="text-4xl font-bold text-primary-purple mb-2">
+          Buyer Signup
+        </h2>
+        <p className="text-[#2B2B2B]">Create your buyer account</p>
       </div>
 
       {/* Signup Form */}
@@ -33,18 +33,11 @@ export default function SignupForm({
         <div>
           <input
             type="text"
-            name="category"
-            placeholder="Choose category"
-            value={
-              selectedRole
-                ? `${
-                    selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)
-                  }`
-                : formData.category
-            }
-            onClick={onBackToRoleSelection}
-            readOnly
-            className="w-full px-8 py-4 rounded-xl bg-input-background cursor-pointer focus:outline-none text-black"
+            name="fullName"
+            placeholder="Full Name"
+            value={formData.fullName || ""}
+            onChange={handleInputChange}
+            className="w-full px-8 py-4 rounded-xl bg-input-background focus:outline-none text-black"
             required
           />
         </div>
@@ -113,7 +106,7 @@ export default function SignupForm({
           type="submit"
           className="w-full bg-primary-purple text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
         >
-          Proceed
+          Create Buyer Account
         </button>
       </form>
 

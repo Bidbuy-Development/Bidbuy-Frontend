@@ -2,9 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Button from "../UI/Button";
+import { FaCheck } from "react-icons/fa";
 
 export default function SigninForm({ formData, onFormDataChange, onSubmit }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleInputChange = (e) => {
     onFormDataChange({
@@ -14,20 +17,20 @@ export default function SigninForm({ formData, onFormDataChange, onSubmit }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="text-left">
-        <h2 className="text-4xl font-bold text-primary-purple mb-2">Login</h2>
+      <div className="text-center">
+        <h2 className="text-4xl font-bold text-primary-purple mb-2">Welcome back</h2>
         <p className="text-[#2b2b2b]">Log into existing account</p>
       </div>
 
       {/* Login Form */}
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-6">
         <div>
           <input
             type="email"
             name="email"
-            placeholder="E-mail"
+            placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
             className="w-full px-8 py-4 pr-12 rounded-xl bg-input-background focus:outline-none text-black"
@@ -59,6 +62,46 @@ export default function SigninForm({ formData, onFormDataChange, onSubmit }) {
           </button>
         </div>
 
+        <div className="flex justify-between">
+          <Link
+            href="/auth/forgot-password"
+            className="text-[#2b2b2b] hover:underline"
+          >
+            Forgot password?
+          </Link>
+
+          <div className="flex items-center">
+            <div className="relative">
+              <input
+                type="checkbox"
+                id="remember-me"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="sr-only"
+              />
+              <label
+                htmlFor="remember-me"
+                className={`
+                  w-5 h-5 rounded-full border-2 cursor-pointer flex items-center justify-center transition-all duration-200
+                  ${
+                    rememberMe
+                      ? "bg-primary-purple border-primary-purple"
+                      : "bg-white border-gray-300 hover:border-primary-purple"
+                  }
+                `}
+              >
+                {rememberMe && <FaCheck className="text-white text-xs" />}
+              </label>
+            </div>
+            <label
+              htmlFor="remember-me"
+              className="text-[#2b2b2b] ml-2 cursor-pointer"
+            >
+              Remember me
+            </label>
+          </div>
+        </div>
+
         <button
           type="submit"
           className="w-full bg-primary-purple text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
@@ -70,7 +113,10 @@ export default function SigninForm({ formData, onFormDataChange, onSubmit }) {
       {/* Sign up link */}
       <div className="text-center">
         <span className="text-light-gray">{"Don't have an account? "}</span>
-        <Link href="/auth/signup" className="text-primary-purple hover:underline">
+        <Link
+          href="/auth/signup"
+          className="text-primary-purple hover:underline"
+        >
           Sign up
         </Link>
       </div>
