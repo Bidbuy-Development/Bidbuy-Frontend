@@ -1,37 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bidbuy-Frontend Developer Guide
 
-## Getting Started
+## Project Structure & Best Practices
 
-First, run the development server:
+Follow these guidelines to keep the codebase maintainable, scalable, and developer-friendly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Folder Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **src/**: All source code (routes, components, styles, utils, etc.)
+- **public/**: Static assets (images, fonts, icons)
+- **.env.local**: Environment variables (never commit secrets)
+- **README.md**: Project documentation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### Inside `src/`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **app/**: Next.js App Router. Organize by route (e.g. `app/auth/signin/page.js`).
+- **components/**: Reusable UI components, grouped by feature or type.
+- **styles/**: CSS files (global and modules)
+- **lib/** or **utils/**: Helper functions, API clients, shared logic
+- **hooks/**: Custom React hooks
+- **context/**: React context providers
+- **types/**: TypeScript types (if using TypeScript)
 
-## Learn More
+### 2. Naming Conventions
 
-To learn more about Next.js, take a look at the following resources.:
+- Use **PascalCase** for components and folders
+- Use **camelCase** for functions and variables
+- Keep names descriptive and concise
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Feature-Based Grouping
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For large projects, group files by feature/domain:
 
-## Deploy on Vercel
+- `src/features/auth/`
+- `src/features/dashboard/`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Each feature can have its own components, hooks, and styles.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Bidbuy-Frontend
+### 4. General Guidelines
+
+- Avoid deep nesting; keep folder hierarchy shallow
+- Separate UI and business logic
+- Use index files for barrel exports when appropriate
+- Add README.md files in subfolders to document their purpose
+
+### 5. Developer Instructions
+
+- **Branching:** Use feature branches for new work. Merge via pull requests.
+- **Commits:** Write clear, descriptive commit messages.
+- **Code Reviews:** All changes must be reviewed before merging.
+- **Testing:** Add and update tests for new features and bug fixes.
+- **Linting:** Run `npm run lint` before pushing code.
+- **Dependencies:** Use only necessary packages. Remove unused dependencies.
+- **Environment:** Never commit secrets or sensitive data.
+- **Documentation:** Update documentation as needed for new features or changes.
+
+---
+
+Adhering to these practices will help all developers work efficiently and keep the project healthy.
