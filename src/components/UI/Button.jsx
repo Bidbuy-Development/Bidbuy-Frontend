@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 
 const Button = ({
@@ -15,14 +16,14 @@ const Button = ({
   };
 
   const radiusMap = {
-  none: "rounded-none",
-  sm: "rounded-sm",
-  md: "rounded-md",
-  lg: "rounded-lg",
-  xl: "rounded-xl",
-  full: "rounded-full",
-};
-const radiusClass = radiusMap[radius] || "rounded-full";
+    none: "rounded-none",
+    sm: "rounded-sm",
+    md: "rounded-md",
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    full: "rounded-full",
+  };
+  const radiusClass = radiusMap[radius] || "rounded-full";
   return (
     <button
       className={`${btnType[variant]} py-[10px] px-[39px] flex items-center gap-2 justify-center ${radiusClass} ${className}`}
