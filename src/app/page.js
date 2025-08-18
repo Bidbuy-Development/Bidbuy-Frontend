@@ -7,6 +7,7 @@ import HowItWorks from "@/components/Home/HowItWorks";
 import NavBar from "@/components/Home/NavBar";
 import Testimonial from "@/components/Home/Testimonial";
 import WhoIsItFor from "@/components/Home/WhoIsItFor";
+import About from "@/components/Home/About";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <NavBar />
       <main>
         <Hero />
+        <About/>
         <HowItWorks />
         <WhoIsItFor />
         <Testimonial />
