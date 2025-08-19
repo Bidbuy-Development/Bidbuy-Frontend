@@ -4,9 +4,7 @@ import Logo from "../UI/Logo";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import { toast } from "react-toastify";
-import {
-  MdOutlineSearch
-} from "react-icons/md";
+import { MdOutlineSearch } from "react-icons/md";
 
 const NavBar = () => {
   return (
@@ -15,7 +13,7 @@ const NavBar = () => {
       <div className="flex gap-4 items-center">
         <Input placeholder="Search..." inputStyle="w-40" />
         <Button
-          onClick={() => toast('🦄 Wow so easy!')}
+          onClick={() => toast("🦄 Wow so easy!")}
           radius="full"
           variant="primary"
           hasIcon={<MdOutlineSearch />}

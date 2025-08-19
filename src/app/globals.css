@@ -9,7 +9,7 @@
   --color-primary-purple: #9267a0;
   --color-primary-gold: #b87a08;
 
-  /* Secondary Colors */
+  /* Secondary Colors *
   --color-text-title: #333333;
   --color-secondary-text: #999999;
 
@@ -25,7 +25,6 @@
   /* Max Width */
   --container-max-width: 1280px;
 }
-
 
 body {
   background-color: var(--color-background-color);
