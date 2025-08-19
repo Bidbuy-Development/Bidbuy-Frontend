@@ -3,31 +3,31 @@ import React from "react";
 import Button from "../UI/Button";
 
 const FAQ = () => {
-  const questions = [
+  const faqItems = [
     {
-      question: "What is Bidbuy",
+      question: "What is Bidbuy?",
       answer:
-        "Bidbuy is an online platform where users can place shopping requests, and shoppers compete by bidding to fulfill them",
+        "Bidbuy is an online platform where users can place shopping requests, and shoppers compete by bidding to fulfill them.",
     },
     {
-      question: "How does Bidbuy work",
+      question: "How does Bidbuy work?",
       answer:
-        "You submit a shopping request specifying the items you want. Shoppers then place bids to fulfill your request, and you choose the shopper you prefer",
+        "You submit a shopping request specifying the items you want. Shoppers then place bids to fulfill your request, and you choose the shopper you prefer.",
     },
     {
-      question: "Is it safe to pay through Bidbuy",
+      question: "Is it safe to pay through Bidbuy?",
       answer:
-        "Yes, payments are secured through the platform. Your money is only released to the shopper once your order is delivered and confirmed",
+        "Yes, payments are secured through the platform. Your money is only released to the shopper once your order is delivered and confirmed.",
     },
     {
-      question: "Can I choose the shopper I want",
+      question: "Can I choose the shopper I want?",
       answer:
-        "Yes, after receiving bids from different shoppers, you can select the shopper you trust or prefer to complete your shopping request",
+        "Yes, after receiving bids from different shoppers, you can select the shopper you trust or prefer to complete your shopping request.",
     },
     {
-      question: "How do I place a shopping request",
+      question: "How do I place a shopping request?",
       answer:
-        "Go to the 'Place Request' page, fill in the details of the items you want, submit your request, and wait for shoppers to bid",
+        "Go to the 'Place Request' page, fill in the details of the items you want, submit your request, and wait for shoppers to bid.",
     },
   ];
 
@@ -38,29 +38,31 @@ const FAQ = () => {
     >
       <article className="space-y-5">
         <header>
-          <h1 className="text-3xl lg:text-5xl lg:pr-14">
+          <h1 className="text-3xl lg:text-5xl lg:pr-14 font-semibold">
             Frequently Asked Questions – Bidbuy
           </h1>
         </header>
-        <dl className="space-y-3">
-          {questions.map(({ question, answer }, index) => (
+        <dl className="space-y-3 md:px-20 lg:px-0">
+          {faqItems.map(({ question, answer }, index) => (
             <div
-              className="collapse collapse-plus bg-base-100 border border-base-300"
+              className="collapse collapse-plus border border-base-300 bg-[#E6DDE9]"
               key={index}
             >
               <input
                 type="radio"
-                name="faq-accordion"
-                defaultChecked={index === 0}
+                name="my-accordion-3"
+                // defaultChecked={index === 0}
               />
-              <dt className="collapse-title font-semibold">{question}?</dt>
+              <dt className="collapse-title font-semibold text-sm lg:text-[16px]">
+                {question}?
+              </dt>
               <dd className="collapse-content text-sm">{answer}.</dd>
             </div>
           ))}
         </dl>
       </article>
 
-      <aside className="flex flex-col justify-between gap-5 h-full">
+      <aside className="hidden lg:flex flex-col justify-between gap-5 h-full">
         <div className="space-y-4">
           <figure className="w-full h-60 relative">
             <Image
