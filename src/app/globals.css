@@ -33,3 +33,12 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .blur-mask {
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent);
+    mask-image: linear-gradient(to bottom,
+        black 70%,
+        transparent);
+  }
+}

@@ -1,0 +1,78 @@
+[33mcommit 9280ed9f7a8639d903e23f6569aeba31f270eff3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDevelopment[m[33m, [m[1;32mfeature/nav-bar[m[33m)[m
+Merge: 9a6a984 2ad38e0
+Author: essienjoy <ejoy7602@gmail.com>
+Date:   Sat Aug 16 18:21:19 2025 +0100
+
+    Merge branch 'main' of https://github.com/Bidbuy-Development/Bidbuy-Frontend into Development
+
+[33mcommit 9a6a984efa70ae69e73535205cd4d0f8eeedbcbd[m[33m ([m[1;31morigin/Development[m[33m)[m
+Merge: a600ead 63b33ff
+Author: Muhammed Abiodun <148370614+BiodunDevv@users.noreply.github.com>
+Date:   Fri Aug 15 07:26:41 2025 +0100
+
+    Merge pull request #4 from Bidbuy-Development/Auth-and--Home-Folder-Structure
+    
+    project structure update
+
+[33mcommit 63b33ffbe062be8c1286093a7012622a4e7ac3e7[m[33m ([m[1;31morigin/Auth-and--Home-Folder-Structure[m[33m)[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Fri Aug 15 07:12:44 2025 +0100
+
+    project structure update
+
+[33mcommit 2ad38e0a0ab513ca460e8a2e1abd14c7012320d7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: f602da9 a600ead
+Author: Muhammed Abiodun <148370614+BiodunDevv@users.noreply.github.com>
+Date:   Mon Aug 11 14:07:59 2025 +0100
+
+    Merge pull request #3 from Bidbuy-Development/Development
+    
+    update colors
+
+[33mcommit a600ead56d671b6f54bac8ff6279231b7e7f61b6[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Mon Aug 11 14:07:04 2025 +0100
+
+    update colors
+
+[33mcommit f602da9b424462145386453605daae64458dc14d[m
+Merge: e0e1ce4 1fb195e
+Author: Muhammed Abiodun <148370614+BiodunDevv@users.noreply.github.com>
+Date:   Mon Aug 11 13:04:15 2025 +0100
+
+    Merge pull request #2 from Bidbuy-Development/Development
+    
+    Development
+
+[33mcommit 1fb195e3fd3152ecafd8686d5805dec706020e3b[m
+Merge: 9e983d7 e8f3402
+Author: Muhammed Abiodun <148370614+BiodunDevv@users.noreply.github.com>
+Date:   Mon Aug 11 12:59:42 2025 +0100
+
+    Merge pull request #1 from Bidbuy-Development/landing
+    
+    update auth
+
+[33mcommit e8f3402e330365bcf7e0792fde8cba4bd910eb0a[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Mon Aug 11 12:58:39 2025 +0100
+
+    update auth
+
+[33mcommit 9e983d72fba63d74e136a3e7b56fb741a6886a10[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Mon Aug 11 12:57:00 2025 +0100
+
+    update readme
+
+[33mcommit e0e1ce42bab96ba457d27ad205ae0e618e555760[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Mon Aug 11 12:48:06 2025 +0100
+
+    first commit
+
+[33mcommit 5b49d17553b66d16fd15997ff907661e65fd284e[m
+Author: Muhammed Abiodun <muhammedabiodun42@gmail.com>
+Date:   Mon Aug 11 11:30:31 2025 +0100
+
+    Initial commit from Create Next App
