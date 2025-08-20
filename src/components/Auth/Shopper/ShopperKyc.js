@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaRegFileImage } from "react-icons/fa";
 import Image from "next/image";
+import Button from "../../UI/Button";
 
 export default function ShopperKyc({ onNext, onPrev }) {
   const [showDocumentOverlay, setShowDocumentOverlay] = useState(false);
@@ -18,10 +19,12 @@ export default function ShopperKyc({ onNext, onPrev }) {
 
   const handleFileUpload = (e, side) => {
     const file = e.target.files[0];
-    if (side === "front") {
-      setFrontDocument(file);
-    } else {
-      setBackDocument(file);
+    if (file) {
+      if (side === "front") {
+        setFrontDocument(file);
+      } else {
+        setBackDocument(file);
+      }
     }
   };
 
@@ -30,25 +33,42 @@ export default function ShopperKyc({ onNext, onPrev }) {
       alert("Please complete all verification steps");
       return;
     }
-    onNext();
+
+    // Log all KYC data to console
+    const kycData = {
+      documentType: selectedDocumentType,
+      frontDocument: {
+        name: frontDocument.name,
+        size: frontDocument.size,
+        type: frontDocument.type,
+        lastModified: new Date(frontDocument.lastModified).toISOString(),
+      },
+      backDocument: {
+        name: backDocument.name,
+        size: backDocument.size,
+        type: backDocument.type,
+        lastModified: new Date(backDocument.lastModified).toISOString(),
+      },
+      uploadedAt: new Date().toISOString(),
+    };
+
+    onNext(kycData);
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
+    <div className="w-full space-y-4 sm:space-y-6 mt-10 sm:mt-0">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-primary-purple mb-2">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-purple mb-2">
           Verify Account
         </h2>
-        <p className="text-[#2b2b2b]">
+        <p className="text-gray-700 text-sm sm:text-base">
           Just a few more details to get your account ready
         </p>
       </div>
 
-      {/* Document Type Selection */}
-      <div className="relative mb-6">
+      <div className="relative mb-4 sm:mb-6">
         <div
-          className="w-full px-6 py-4 border-2 border-black rounded-xl cursor-pointer flex justify-between items-center focus:outline-none text-[#2b2b2b]"
+          className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-xl cursor-pointer flex justify-between items-center focus:outline-none text-gray-700 bg-input-background text-sm sm:text-base"
           onClick={() => setShowDocumentOverlay(!showDocumentOverlay)}
         >
           <span>{selectedDocumentType || "Document type"}</span>
@@ -70,7 +90,7 @@ export default function ShopperKyc({ onNext, onPrev }) {
               <div
                 key={type}
                 onClick={() => handleDocumentTypeSelect(type)}
-                className="px-8 py-4 cursor-pointer hover:bg-gray-50 transition-colors text-[#2b2b2b]"
+                className="px-4 sm:px-6 lg:px-8 py-3 sm:py-4 cursor-pointer hover:bg-gray-50 transition-colors text-gray-700 text-sm sm:text-base"
                 style={{
                   borderBottom:
                     index < documentTypes.length - 1
@@ -85,28 +105,24 @@ export default function ShopperKyc({ onNext, onPrev }) {
         )}
       </div>
 
-      {/* Front Document Upload */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div
-          className="w-full px-6 py-2 rounded-xl border-2 border-black cursor-pointer flex justify-between items-center"
+          className="w-full px-4 sm:px-6 py-2 sm:py-3 rounded-xl border-2 border-gray-300 cursor-pointer flex justify-between items-center bg-input-background"
           onClick={() => document.getElementById("front-upload").click()}
-          style={{
-            color: frontDocument ? "#2b2b2b" : "#999",
-          }}
         >
           <div className="flex items-center gap-3">
             <div>
-              <div className="text-md font-medium text-[#2b2b2b] mb-1">
+              <div className="text-sm sm:text-base font-medium text-gray-700 mb-1">
                 Front
               </div>
-              <div className="text-xs text-[#1e1e1e]">
+              <div className="text-xs sm:text-sm text-gray-600">
                 {frontDocument
                   ? frontDocument.name
                   : "Upload doc Supports: JPG, PNG, PDF"}
               </div>
             </div>
           </div>
-          <FaRegFileImage className="text-xl text-black" />
+          <FaRegFileImage className="text-lg sm:text-xl text-gray-700" />
         </div>
         <input
           id="front-upload"
@@ -117,28 +133,24 @@ export default function ShopperKyc({ onNext, onPrev }) {
         />
       </div>
 
-      {/* Back Document Upload */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div
-          className="w-full px-6 py-2 rounded-xl border-2 border-black cursor-pointer flex justify-between items-center"
+          className="w-full px-4 sm:px-6 py-2 sm:py-3 rounded-xl border-2 border-gray-300 cursor-pointer flex justify-between items-center bg-input-background"
           onClick={() => document.getElementById("back-upload").click()}
-          style={{
-            color: backDocument ? "#2b2b2b" : "#999",
-          }}
         >
           <div className="flex items-center gap-3">
             <div>
-              <div className="text-sm font-medium text-[#2b2b2b] mb-1">
+              <div className="text-sm sm:text-base font-medium text-gray-700 mb-1">
                 Back
               </div>
-              <div className="text-xs text-[#1e1e1e]">
+              <div className="text-xs sm:text-sm text-gray-600">
                 {backDocument
                   ? backDocument.name
                   : "Upload doc Supports: JPG, PNG, PDF"}
               </div>
             </div>
           </div>
-          <FaRegFileImage className="text-xl text-black" />
+          <FaRegFileImage className="text-lg sm:text-xl text-gray-700" />
         </div>
         <input
           id="back-upload"
@@ -149,50 +161,50 @@ export default function ShopperKyc({ onNext, onPrev }) {
         />
       </div>
 
-      {/* Face Verification */}
-      <div className="mb-8">
-        <h3 className="text-[#2b2b2b] text-lg mb-4 font-semibold">
+      <div className="mb-6 sm:mb-8">
+        <h3 className="text-gray-700 text-center sm:text-left text-base sm:text-lg mb-3 sm:mb-4 font-semibold">
           Face verification
         </h3>
 
-        <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-input-background">
-          <div className="w-24 h-24 mx-auto mb-2 relative flex items-center justify-center">
+        <div className="w-40 mx-auto sm:w-full sm:mx-0 border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-6 lg:p-8 text-center bg-input-background">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-2 relative flex items-center justify-center">
             <Image
               src="/OpenCamera.svg"
               alt="Open Camera"
               width={90}
               height={90}
-              className="object-contain"
+              className="object-contain w-full h-full"
             />
           </div>
 
           <button
             type="button"
-            className="bg-white border border-gray-300 rounded-full px-4 py-2 text-sm text-[#2b2b2b] hover:bg-gray-50 transition-colors font-medium"
+            className="bg-white border border-gray-300 rounded-full px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 hover:bg-gray-50 transition-colors font-medium"
           >
             Open Camera
           </button>
         </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
         {onPrev && (
-          <button
-            type="button"
+          <Button
+            variant="secondary"
+            radius="lg"
             onClick={onPrev}
-            className="flex-1 px-6 py-4 border-2 border-gray-300 text-gray-600 rounded-xl font-medium hover:border-primary-purple hover:text-primary-purple transition-all duration-300"
+            className="px-6 sm:px-8 py-3 sm:py-4 w-full text-sm sm:text-base cursor-pointer"
           >
             Back
-          </button>
+          </Button>
         )}
-        <button
-          type="button"
-          className="flex-1 bg-primary-purple text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
+        <Button
+          variant="primary"
+          radius="lg"
           onClick={handleContinue}
+          className="px-6 sm:px-8 py-3 sm:py-4 w-full text-sm sm:text-base cursor-pointer"
         >
           Continue
-        </button>
+        </Button>
       </div>
     </div>
   );

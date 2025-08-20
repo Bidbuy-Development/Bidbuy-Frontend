@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ResetPassword from "../../../components/Auth/ResetPassword";
-import  from "../../../components/Auth/auth-layout";
 import { toast } from "react-toastify";
 
 export default function ResetPasswordPage() {
@@ -26,8 +25,11 @@ export default function ResetPasswordPage() {
     }
   }, [email]);
 
-  const handleFormDataChange = (newData) => {
-    setFormData(newData);
+  const handleFormDataChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -38,6 +40,12 @@ export default function ResetPasswordPage() {
       return;
     }
 
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long!");
+      return;
+    }
+
+    toast.success("Password reset successful!");
     router.push("/auth/signin");
   };
 

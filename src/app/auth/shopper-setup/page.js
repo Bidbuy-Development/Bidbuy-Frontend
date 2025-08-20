@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
+import AccountSetup from "../../../components/Auth/AccountSetup";
 import ShopperKyc from "../../../components/Auth/Shopper/ShopperKyc";
 import Welcome from "@/components/Auth/Welcome";
 
-export default function BuyerSetupPage() {
+export default function ShopperSetupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const router = useRouter();
   const [setupData, setSetupData] = useState({
@@ -21,8 +21,11 @@ export default function BuyerSetupPage() {
     },
   });
 
-  const handleSetupDataChange = (newData) => {
-    setSetupData(newData);
+  const handleSetupDataChange = (field, value) => {
+    setSetupData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleAccountSetupSubmit = (e) => {
@@ -30,8 +33,20 @@ export default function BuyerSetupPage() {
     setCurrentStep(2);
   };
 
-  const handleKycComplete = () => {
-    console.log("Complete setup data:", setupData);
+  const handleKycComplete = (kycData) => {
+    const completeSetupData = {
+      ...setupData,
+      kycData: {
+        documentType: kycData.documentType,
+        frontDocument: kycData.frontDocument,
+        backDocument: kycData.backDocument,
+        faceVerification: true,
+      },
+    };
+
+    setSetupData(completeSetupData);
+
+    console.log("Complete setup data:", completeSetupData);
     setCurrentStep(3);
   };
 
@@ -46,7 +61,7 @@ export default function BuyerSetupPage() {
   return (
     <>
       {currentStep === 1 ? (
-        <BuyerAccountSetup
+        <AccountSetup
           formData={setupData}
           onFormDataChange={handleSetupDataChange}
           onSubmit={handleAccountSetupSubmit}

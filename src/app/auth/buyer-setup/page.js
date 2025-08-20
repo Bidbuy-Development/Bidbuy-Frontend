@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
+import AccountSetup from "../../../components/Auth/AccountSetup";
 import CategorySelection from "../../../components/Auth/Buyer/BuyerCategorySelection";
 import Welcome from "@/components/Auth/Welcome";
 
@@ -16,22 +16,31 @@ export default function BuyerSetupPage() {
     selectedCategories: [],
   });
 
-  const handleSetupDataChange = (newData) => {
-    setSetupData(newData);
+  const handleSetupDataChange = (field, value) => {
+    setSetupData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2); // Move to category selection
+    setCurrentStep(2);
   };
 
-  const handleCategorySelection = (categories) => {
-    setSetupData({ ...setupData, selectedCategories: categories });
-    console.log("Complete setup data:", {
+  const handleCategoryComplete = (categories) => {
+    const completeSetupData = {
       ...setupData,
       selectedCategories: categories,
-    });
+    };
+    setSetupData(completeSetupData);
+
+    console.log("Complete buyer setup data:", completeSetupData);
     setCurrentStep(3);
+  };
+
+  const handlePrevFromCategory = () => {
+    setCurrentStep(1);
   };
 
   const handleWelcomeContinue = () => {
@@ -41,13 +50,16 @@ export default function BuyerSetupPage() {
   return (
     <>
       {currentStep === 1 ? (
-        <BuyerAccountSetup
+        <AccountSetup
           formData={setupData}
           onFormDataChange={handleSetupDataChange}
           onSubmit={handleAccountSetupSubmit}
         />
       ) : currentStep === 2 ? (
-        <CategorySelection onCategorySelection={handleCategorySelection} />
+        <CategorySelection
+          onNext={handleCategoryComplete}
+          onPrev={handlePrevFromCategory}
+        />
       ) : (
         <Welcome onContinue={handleWelcomeContinue} />
       )}

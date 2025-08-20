@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ForgetPassword from "../../../components/Auth/ForgetPassword";
-import  from "../../../components/Auth/auth-layout";
 
 export default function ForgotPasswordPage() {
   const [formData, setFormData] = useState({
