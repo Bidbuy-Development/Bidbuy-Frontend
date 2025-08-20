@@ -60,7 +60,7 @@ const HowItWorks = () => {
       {/* <CoreFeature /> */}
 
       {/* Core Features Section */}
-      <div className="mt-18 mb-10 mx-2">
+      <div className="mt-18 mb-10 lg:mx-2">
         <div
           className="bg-cover bg-center bg-no-repeat h-screen w-full"
           style={{
@@ -68,10 +68,12 @@ const HowItWorks = () => {
           }}
         >
           {/*displays the core features content for either users or shoppers */}
-          <h1 className="text-background-color font-bold text-4xl text-center pt-10">
+          <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center pt-10">
             {coreFeatures[activeTab].title}
           </h1>
-          <div className="mt-70">{coreFeatures[activeTab].description}</div>
+          <div className="mt-10 lg:mt-70">
+            {coreFeatures[activeTab].description}
+          </div>
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import CoreFeatures from "./CoreFeatures";
 
 const ShopperCoreFeatures = () => {
   return (
-    <div className="flex gap-4 justify-center">
+    <div className="grid grid-cols-2 gap-4 px-2 lg:px-20 lg:grid-cols-4">
       <CoreFeatures
         logo="/verified.svg"
         title="Badges"

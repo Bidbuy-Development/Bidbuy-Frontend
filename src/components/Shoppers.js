@@ -13,7 +13,7 @@ const Shoppers = () => {
       </p>
 
       {/* Card Grid for shoppers section*/}
-      <div className="mt-5 mx-2 text-start grid grid-cols-1 lg:grid-cols-2 gap-10 lg:w-3/4">
+      <div className="mt-5 mx-2 text-start grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-8 lg:w-3/4">
         <Card
           imageSrc="/signup.svg"
           title="Sign Up"

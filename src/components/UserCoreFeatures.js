@@ -3,7 +3,7 @@ import CoreFeatures from "./CoreFeatures";
 
 const UserCoreFeatures = () => {
   return (
-    <div className="flex gap-4 justify-center">
+    <div className="grid grid-cols-2 gap-4 px-2 lg:px-20 lg:grid-cols-4">
       <CoreFeatures
         logo="/verified.svg"
         title="Verified Shoppers"
@@ -12,7 +12,7 @@ const UserCoreFeatures = () => {
       <CoreFeatures
         logo="/payment.svg"
         title="Escrow Payment"
-        description="Pay securely; funds are held until order delivery is confirmed."
+        description="Pay securely funds are held until order delivery is confirmed."
       />
       <CoreFeatures
         logo="/ratings.svg"
