@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 import AccountSetup from "../../../components/Auth/AccountSetup";
 import CategorySelection from "../../../components/Auth/Buyer/BuyerCategorySelection";
 import Welcome from "@/components/Auth/Welcome";
+import useSteps from "@/hooks/useSteps";
 
 export default function BuyerSetupPage() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const { step: currentStep, next, prev } = useSteps(3);
   const router = useRouter();
   const [setupData, setSetupData] = useState({
     phone: "",
@@ -25,7 +26,7 @@ export default function BuyerSetupPage() {
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2);
+    next();
   };
 
   const handleCategoryComplete = (categories) => {
@@ -36,11 +37,11 @@ export default function BuyerSetupPage() {
     setSetupData(completeSetupData);
 
     console.log("Complete buyer setup data:", completeSetupData);
-    setCurrentStep(3);
+    next();
   };
 
   const handlePrevFromCategory = () => {
-    setCurrentStep(1);
+    prev();
   };
 
   const handleWelcomeContinue = () => {

@@ -4,9 +4,10 @@ import { useRouter } from "next/navigation";
 import AccountSetup from "../../../components/Auth/AccountSetup";
 import ShopperKyc from "../../../components/Auth/Shopper/ShopperKyc";
 import Welcome from "@/components/Auth/Welcome";
+import useSteps from "@/hooks/useSteps";
 
 export default function ShopperSetupPage() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const { step: currentStep, next, prev } = useSteps(3);
   const router = useRouter();
   const [setupData, setSetupData] = useState({
     phone: "",
@@ -30,7 +31,7 @@ export default function ShopperSetupPage() {
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2);
+    next();
   };
 
   const handleKycComplete = (kycData) => {
@@ -47,7 +48,7 @@ export default function ShopperSetupPage() {
     setSetupData(completeSetupData);
 
     console.log("Complete setup data:", completeSetupData);
-    setCurrentStep(3);
+    next();
   };
 
   const handleWelcomeContinue = () => {
@@ -55,7 +56,7 @@ export default function ShopperSetupPage() {
   };
 
   const handlePrevFromKyc = () => {
-    setCurrentStep(1);
+    prev();
   };
 
   return (

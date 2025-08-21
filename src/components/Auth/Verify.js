@@ -82,6 +82,11 @@ export default function Verify({
         title: "Verify Email",
         subtitle: "We sent a code to the email address",
       };
+    } else {
+      return {
+        title: "Verify Account",
+        subtitle: "We sent a verification code to your email",
+      };
     }
   };
 
@@ -97,6 +102,11 @@ export default function Verify({
       return {
         title: "Email Verified",
         subtitle: "Setting up your account...",
+      };
+    } else {
+      return {
+        title: "Account Verified",
+        subtitle: "You can now access your account",
       };
     }
   };

@@ -91,7 +91,7 @@ export default function Welcome({ onContinue }) {
         {/* Outer circle */}
         <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-gradient-to-br from-primary-purple/30 to-primary-purple/10 flex items-center justify-center shadow-lg">
           {/* Inner circle */}
-          <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-primary-purple/50 to-primary-purple/20 flex items-center justify-center">
+          <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-primary-purple/50 to-primary-purple/20 flex items-center justify-center">
             {/* Checkmark icon */}
             <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-primary-purple flex items-center justify-center shadow-md">
               <FaCheck className="text-white text-sm sm:text-base lg:text-lg" />

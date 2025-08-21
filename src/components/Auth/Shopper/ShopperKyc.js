@@ -34,22 +34,10 @@ export default function ShopperKyc({ onNext, onPrev }) {
       return;
     }
 
-    // Log all KYC data to console
     const kycData = {
       documentType: selectedDocumentType,
-      frontDocument: {
-        name: frontDocument.name,
-        size: frontDocument.size,
-        type: frontDocument.type,
-        lastModified: new Date(frontDocument.lastModified).toISOString(),
-      },
-      backDocument: {
-        name: backDocument.name,
-        size: backDocument.size,
-        type: backDocument.type,
-        lastModified: new Date(backDocument.lastModified).toISOString(),
-      },
-      uploadedAt: new Date().toISOString(),
+      frontDocument: frontDocument,
+      backDocument: backDocument,
     };
 
     onNext(kycData);
