@@ -13,7 +13,7 @@ const NavBar = () => {
     <header className="flex items-center justify-between p-4">
       <Logo color="#9267A0" />
       <div className="flex gap-4 items-center">
-        <Input placeholder="Search..." inputStyle="w-40" />
+        <Input placeholder="Search..."  />
         <Button
           onClick={() => toast('🦄 Wow so easy!')}
           radius="full"

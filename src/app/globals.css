@@ -8,10 +8,12 @@
   /* Primary Colors */
   --color-primary-purple: #9267a0;
   --color-primary-gold: #b87a08;
+  --color-light-purple: #842e95;
 
   /* Secondary Colors */
   --color-text-title: #333333;
   --color-secondary-text: #999999;
+  --color-shade-text: #020202;
 
   /* Secondary Background Colors */
   --color-background-card: #f2f2f2;
