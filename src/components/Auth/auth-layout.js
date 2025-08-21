@@ -33,7 +33,7 @@ export default function AuthLayout({ children }) {
         {/* Back button */}
         <button
           onClick={handleBack}
-          className="absolute top-8 left-8 p-2 cursor-pointer"
+          className="absolute top-8 left-8 p-2 cursor-pointer rounded-md bg-white shadow-md hover:shadow-lg transition-shadow"
         >
           <Image
             src="/BackIcon.svg"
