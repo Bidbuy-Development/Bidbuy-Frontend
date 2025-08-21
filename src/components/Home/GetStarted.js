@@ -23,7 +23,7 @@ const GetStarted = () => {
           {/* Right Image */}
           <div className="flex-1 relative mx-auto p-6">
             <Image
-              src="/images/Rectangle 84.jpg"
+              src="/images/Cart-Image.jpg"
               alt="Shopping cart"
               width={250}
               height={200}

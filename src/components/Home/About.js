@@ -5,11 +5,11 @@ const About = () => {
   return (
     <section className='px-4 sm:px-6 md:px-13 py-12 bg-background-color'>
 
-      {/* flex-row fpr desktop*/}
+      {/* flex-row for desktop*/}
 
         <div className='flex gap-6 items-center justify-center flex-col lg:flex-row'>
            <Image
-             src="/images/Group 63.png"
+             src="/images/Group-Images.png"
                 alt="Shopper picking groceries"
                 width={250}
                 height={200}
@@ -23,12 +23,12 @@ const About = () => {
 
           <div className='flex flex-col-reverse sm:flex-col'>
             <Image
-                src="/images/freepik__the-style-is-candid-image-photography-with-natural__74510.jpg"
+                src="/images/Left-Image.jpg"
                 alt="Shopper picking groceries"
                 width={250}
                 height={200}
-                className="rounded-lg object-cover w-full h-auto mb-4 md:flex flex-col lg:hidden"/>
-          <p className="text-lg to-about-text mb-4">
+                className="rounded-lg object-cover w-full h-auto mb-4 md: flex-col lg:hidden"/>
+          <p className="text-lg text-about-text mb-4">
             Bidbuy connects buyers with trusted personal shoppers who purchase and
             deliver exactly what they need.
           </p>
@@ -36,12 +36,12 @@ const About = () => {
           
           <div className='flex flex-col-reverse sm:flex-col'>
             <Image
-                src="/images/freepik__the-style-is-candid-image-photography-with-natural__74509 1.jpg"
+                src="/images/Right-Image.jpg"
                 alt="Laptop with bidbuy"
                 width={250}
                 height={500}
-                className="rounded-lg object-cover w-full h-auto mb-4 md:flex flex-col lg:hidden"/> 
-          <p className="text-lg to-about-text">
+                className="rounded-lg object-cover w-full h-auto mb-4 md:flex-col lg:hidden"/> 
+          <p className="text-lg text-about-text">
             Buyers post requests, get competitive bids, and choose the best offer.
             Shoppers earn flexibly while helping others.
           </p>
