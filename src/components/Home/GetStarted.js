@@ -9,15 +9,11 @@ const GetStarted = () => {
         <div className="bg-primary-purple  flex flex-col-reverse mx-7 my-6 md:flex-row md:mx-10 md:my-9 justify-center overflow-hidden rounded-lg">
           
           {/* Left text */}
-          <div className="flex-1 p-8 text-white flex flex-col justify-center">
-            <h2 className="text-2xl md:text-3xl font-medium leading-snug mb-6">
+          <div className="flex-1 px-8 py-10 text-white flex flex-col justify-center">
+            <h2 className="text-2xl md:text-3xl font-medium mb-6">
               Ready to make shopping easier or earn as a personal shopper?
             </h2>
-            <Link href="/auth/signup">
-              <button className="bg-white text-black px-6 py-3 rounded-md font-medium w-fit hover:bg-gray-200 transition">
-                Get started
-              </button>
-            </Link>
+            <Link href="/auth/signup"  className="bg-white text-black px-6 py-2 rounded-xl ml-10  font-medium w-fit hover:bg-gray-200 transition">Get started</Link>
           </div>
 
           {/* Right Image */}
