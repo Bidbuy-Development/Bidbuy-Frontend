@@ -11,7 +11,7 @@ import {
   FaPlane,
 } from "react-icons/fa";
 import { GiRunningShoe } from "react-icons/gi";
-import Button from "../../UI/Button";
+import Button from "../../UI/Link";
 
 const categories = [
   { id: "dress", name: "Dress", icon: FaTshirt, color: "text-pink-500" },
@@ -87,24 +87,21 @@ export default function CategorySelection({
               className={`
                 p-6 rounded-lg border-2 transition-all duration-200 
                 flex flex-col items-center gap-3 min-h-[120px]
-                ${
-                  isSelected
-                    ? "border-primary-purple shadow-md"
-                    : isDisabled
+                ${isSelected
+                  ? "border-primary-purple shadow-md"
+                  : isDisabled
                     ? "border-gray-200 bg-gray-50 cursor-not-allowed opacity-50"
                     : "border-gray-200 bg-[#9267A01C] hover:border-gray-300 hover:shadow-sm cursor-pointer"
                 }
               `}
             >
               <IconComponent
-                className={`text-3xl ${
-                  isSelected ? "text-primary-purple" : category.color
-                }`}
+                className={`text-3xl ${isSelected ? "text-primary-purple" : category.color
+                  }`}
               />
               <span
-                className={`text-sm font-medium text-center ${
-                  isSelected ? "text-primary-purple" : "text-gray-700"
-                }`}
+                className={`text-sm font-medium text-center ${isSelected ? "text-primary-purple" : "text-gray-700"
+                  }`}
               >
                 {category.name}
               </span>
