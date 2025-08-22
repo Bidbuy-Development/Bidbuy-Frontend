@@ -9,7 +9,7 @@ import { FaApple } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <section className="w-full bg-light-purple pt-[40px] pb-[40px]">
+    <section className="w-full bg-primary-purple pt-[40px] pb-[40px]">
       <div className="md:mx-[50px] md:mt-[0px] flex flex-col">
           
        <div className="md:flex md:justify-between max-md:space-y-3">      
