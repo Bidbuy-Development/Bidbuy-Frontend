@@ -18,8 +18,11 @@ export default function SignupPage() {
     role: "",
   });
 
-  const handleInputChange = (newFormData) => {
-    setFormData(newFormData);
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleRoleSelect = (role) => {
@@ -45,6 +48,7 @@ export default function SignupPage() {
       toast.error("Passwords do not match!");
       return;
     }
+    console.log(formData);
 
     router.push(
       `/auth/verify?type=signup&role=${selectedRole}&email=${encodeURIComponent(

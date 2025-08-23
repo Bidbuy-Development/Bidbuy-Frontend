@@ -6,11 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  fallback: ["system-ui", "arial"],
 });
 
 export const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata = {

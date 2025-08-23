@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
+import AccountSetup from "../../../components/Auth/AccountSetup";
 import ShopperKyc from "../../../components/Auth/Shopper/ShopperKyc";
 import Welcome from "@/components/Auth/Welcome";
+import useSteps from "@/hooks/useSteps";
 
-export default function BuyerSetupPage() {
-  const [currentStep, setCurrentStep] = useState(1);
+export default function ShopperSetupPage() {
+  const { step: currentStep, next, prev } = useSteps(3);
   const router = useRouter();
   const [setupData, setSetupData] = useState({
     phone: "",
@@ -21,18 +22,33 @@ export default function BuyerSetupPage() {
     },
   });
 
-  const handleSetupDataChange = (newData) => {
-    setSetupData(newData);
+  const handleSetupDataChange = (field, value) => {
+    setSetupData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2);
+    next();
   };
 
-  const handleKycComplete = () => {
-    console.log("Complete setup data:", setupData);
-    setCurrentStep(3);
+  const handleKycComplete = (kycData) => {
+    const completeSetupData = {
+      ...setupData,
+      kycData: {
+        documentType: kycData.documentType,
+        frontDocument: kycData.frontDocument,
+        backDocument: kycData.backDocument,
+        faceVerification: true,
+      },
+    };
+
+    setSetupData(completeSetupData);
+
+    console.log("Complete setup data:", completeSetupData);
+    next();
   };
 
   const handleWelcomeContinue = () => {
@@ -40,13 +56,13 @@ export default function BuyerSetupPage() {
   };
 
   const handlePrevFromKyc = () => {
-    setCurrentStep(1);
+    prev();
   };
 
   return (
     <>
       {currentStep === 1 ? (
-        <BuyerAccountSetup
+        <AccountSetup
           formData={setupData}
           onFormDataChange={handleSetupDataChange}
           onSubmit={handleAccountSetupSubmit}

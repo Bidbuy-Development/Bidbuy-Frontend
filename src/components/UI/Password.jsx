@@ -5,12 +5,18 @@ import Group from "./Group";
 import Input from "./Input";
 import { useState } from "react";
 
-const Password = () => {
+const Password = ({ value, onChange, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Group>
-      <Input type={showPassword ? "text" : "password"} placeholder="Password" />
+      <Input
+        type={showPassword ? "text" : "password"}
+        placeholder="Password"
+        value={value}
+        onChange={onChange}
+        {...props}
+      />
       <button
         onClick={() => setShowPassword((v) => !v)}
         type="button"

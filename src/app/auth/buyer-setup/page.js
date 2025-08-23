@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import BuyerAccountSetup from "../../../components/Auth/Buyer/BuyerAccountSetup";
+import AccountSetup from "../../../components/Auth/AccountSetup";
 import CategorySelection from "../../../components/Auth/Buyer/BuyerCategorySelection";
 import Welcome from "@/components/Auth/Welcome";
+import useSteps from "@/hooks/useSteps";
 
 export default function BuyerSetupPage() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const { step: currentStep, next, prev } = useSteps(3);
   const router = useRouter();
   const [setupData, setSetupData] = useState({
     phone: "",
@@ -16,22 +17,31 @@ export default function BuyerSetupPage() {
     selectedCategories: [],
   });
 
-  const handleSetupDataChange = (newData) => {
-    setSetupData(newData);
+  const handleSetupDataChange = (field, value) => {
+    setSetupData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleAccountSetupSubmit = (e) => {
     e.preventDefault();
-    setCurrentStep(2); // Move to category selection
+    next();
   };
 
-  const handleCategorySelection = (categories) => {
-    setSetupData({ ...setupData, selectedCategories: categories });
-    console.log("Complete setup data:", {
+  const handleCategoryComplete = (categories) => {
+    const completeSetupData = {
       ...setupData,
       selectedCategories: categories,
-    });
-    setCurrentStep(3);
+    };
+    setSetupData(completeSetupData);
+
+    console.log("Complete buyer setup data:", completeSetupData);
+    next();
+  };
+
+  const handlePrevFromCategory = () => {
+    prev();
   };
 
   const handleWelcomeContinue = () => {
@@ -41,13 +51,16 @@ export default function BuyerSetupPage() {
   return (
     <>
       {currentStep === 1 ? (
-        <BuyerAccountSetup
+        <AccountSetup
           formData={setupData}
           onFormDataChange={handleSetupDataChange}
           onSubmit={handleAccountSetupSubmit}
         />
       ) : currentStep === 2 ? (
-        <CategorySelection onCategorySelection={handleCategorySelection} />
+        <CategorySelection
+          onNext={handleCategoryComplete}
+          onPrev={handlePrevFromCategory}
+        />
       ) : (
         <Welcome onContinue={handleWelcomeContinue} />
       )}
