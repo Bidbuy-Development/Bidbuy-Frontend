@@ -4,7 +4,6 @@ import { FaCheck } from "react-icons/fa";
 
 export default function Verify({
   onNext,
-  onPrev,
   type = "verification",
   email,
   onResendCode,

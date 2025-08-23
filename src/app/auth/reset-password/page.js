@@ -1,32 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import ResetPassword from "../../../components/Auth/ResetPassword";
 import { toast } from "react-toastify";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-
+  const urlParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
+  const emailParam = urlParams ? urlParams.get("email") : "";
+  const decodedEmail = emailParam ? decodeURIComponent(emailParam) : "";
   const [formData, setFormData] = useState({
-    email: "",
+    email: decodedEmail,
     password: "",
     confirmPassword: "",
   });
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const emailParam = urlParams.get("email");
-
-    if (emailParam) {
-      const decodedEmail = decodeURIComponent(emailParam);
-      setEmail(decodedEmail);
-      setFormData((prev) => ({
-        ...prev,
-        email: decodedEmail,
-      }));
-    }
-  }, []);
 
   const handleFormDataChange = (field, value) => {
     setFormData((prev) => ({
