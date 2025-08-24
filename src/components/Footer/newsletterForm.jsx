@@ -10,7 +10,7 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import { toast } from "react-toastify";
 import ErrorMessage from "../Contact/ErrorMessage";
-import { MdOutlineMail } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 
 
 export default function NewsletterForm() {
@@ -46,8 +46,8 @@ export default function NewsletterForm() {
         onChange={(val) => handleChange("email", val)}
          >
         <div className="flex ">
-        <MdOutlineMail  className=" absolute left-1 top-[14px] -translate-y-1/2 fold-bold text-black  w-[1rem] " />
-        <Input className=" md:w-[333px]  !pl-6 !py-0 !max-md:h-[20px]   bg-white text-gray-500 rounded-none " />
+        <MdEmail  className=" absolute left-1 top-[14px] -translate-y-1/2 fold-bold text-black  w-[1rem] " />
+        <Input className=" md:w-[333px]  !pl-6 !py-0 !max-md:h-[20px]   bg-white !text-gray-700 rounded-none " />
         </div>
         <ErrorMessage className="!text-white w-[300px] h-[27px] mt-1"/>
       </TextField>
@@ -57,7 +57,7 @@ export default function NewsletterForm() {
         type="submit"
         variant="secondary"
         radius="none"
-        className="text-black !px-0 !py-0 md:w-[106px] max-md:w-[99px] h-[25px] max-md:h-[30px] max-md:mx-auto "
+        className="!text-black font-semibold !px-0 !py-0 md:w-[106px] max-md:w-[99px] h-[25px] max-md:h-[30px] max-md:mx-auto "
       >
           Subscribe
       </Button>

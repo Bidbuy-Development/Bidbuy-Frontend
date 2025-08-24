@@ -7,7 +7,7 @@ const Rating = ({ rating = 4.8, totalStars = 5 }) => {
 
   return (
     <div className="flex  gap-2">
-      {/* Keep the original decimal rating */}
+      {/* Keep the original decimal rating  */}
       <span className="text-[24px] text-shade-text font-[600] ">{rating.toFixed(1)}</span>
 
       {/* Stars (rounded) */}

@@ -7,7 +7,7 @@ import { BsTwitterX } from "react-icons/bs";
 function SocialIcons() {
     return<>
 
-    <div className="flex-col gap-1 flex  ">
+    <div className="flex-col gap-1  flex  ">
 
         <p className="text-[17px] md:text-center text-white font-[500] ">Contact us</p>
 
