@@ -1,30 +1,31 @@
 import Image from "next/image";
-import Button from "../UI/Button";
-
+import Link from "../UI/Link";
+import heroImg from "../../../public/images/heroimg.jpg";
 
 const Hero = () => {
   return (
-    <section className="flex flex-col sm:flex-col-reverse lg:flex-row justify-between items-center mx-auto max-w-[var(--container-max-width)]  min-h-screen  py-10 gap-6 ">
+    <section className="grid grid-rows-[1fr,minmax(200px,800px)]  lg:grid-cols-2   justify-between items-center mx-auto max-w-[var(--container-max-width)]  min-h-screen  py-5 gap-6 ">
 
-      <div className="w-full  lg:w-1/2 px-2 ">
-        <h1 className="text-3xl font-bold sm:text-5xl  lg:w-full  ">Connecting <span className="text-primary-purple">Buyers</span> and personal shoppers</h1>
+      <section className=" order-1 sm:order-2 self-start px-[var(--spacing-main-inline-padding)] flex flex-col items-start lg:order-none">
+        <h1 className="text-3xl font-bold sm:text-5xl  lg:text-[75px]">Connecting <span className="text-primary-purple">Buyers</span> and personal shoppers</h1>
         <p className="py-6 text-lg">
           Whether you’re buying or helping others shop, Bidbuy makes the process easy, secure, and rewarding
         </p>
-        <Button >View Shop</Button>
-      </div>
+        <Link href='#' className='py-2.5 px-10 ' >View Shop</Link>
+      </section>
 
 
-      <div className="relative w-full h-[409px] sm:h-[800px] lg:h-[584px] overflow-hidden   lg:w-1/2 blur-mask ">
+      <figcaption className="relative h-[409px] lg:h-[584px] sm:h-[800px] order-2 sm:order-1 overflow-hidden  blur-mask  lg:order-none">
         <Image
-          src="/heroimg.jpg"
+          src={heroImg}
           alt="Hero section img"
           fill
           quality={80}
-          className="object-cover rounded-2xl lg:rounded-[200px] sm:rounded-none px-2 sm:px-0 lg:pr-2"
+          className="object-cover rounded-2xl lg:rounded-[200px] sm:rounded-none px-[var(--spacing-main-inline-padding)] sm:px-0 lg:px-[var(--spacing-main-inline-padding)]"
+          placeholder="blur"
           priority
         />
-      </div>
+      </figcaption>
 
     </section>
   );

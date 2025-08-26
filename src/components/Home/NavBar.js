@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Logo from "../UI/Logo";
-import Button from "../UI/Button";
-import Input from "../UI/Input";
+import Button from "../UI/Link";
+// import Input from "../UI/Input";
 import { toast } from "react-toastify";
 import {
   MdOutlineSearch
@@ -13,7 +13,7 @@ const NavBar = () => {
     <header className="flex items-center justify-between p-4">
       <Logo color="#9267A0" />
       <div className="flex gap-4 items-center">
-        <Input placeholder="Search..." inputStyle="w-40" />
+        {/* <Input placeholder="Search..." inputStyle="w-40" /> */}
         <Button
           onClick={() => toast('🦄 Wow so easy!')}
           radius="full"

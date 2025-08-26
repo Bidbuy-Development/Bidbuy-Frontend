@@ -24,6 +24,9 @@
 
   /* Max Width */
   --container-max-width: 1280px;
+
+  /* Container Padding */
+  --spacing-main-inline-padding: 8px;
 }
 
 
