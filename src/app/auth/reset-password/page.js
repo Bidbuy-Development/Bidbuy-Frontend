@@ -1,33 +1,29 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import ResetPassword from "../../../components/Auth/ResetPassword";
-import  from "../../../components/Auth/auth-layout";
 import { toast } from "react-toastify";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email"); // Get email from URL parameters
-
+  const urlParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
+  const emailParam = urlParams ? urlParams.get("email") : "";
+  const decodedEmail = emailParam ? decodeURIComponent(emailParam) : "";
   const [formData, setFormData] = useState({
-    email: "",
+    email: decodedEmail,
     password: "",
     confirmPassword: "",
   });
 
-  // Set email from URL when component mounts
-  useEffect(() => {
-    if (email) {
-      setFormData((prev) => ({
-        ...prev,
-        email: decodeURIComponent(email),
-      }));
-    }
-  }, [email]);
 
-  const handleFormDataChange = (newData) => {
-    setFormData(newData);
+  const handleFormDataChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -38,6 +34,12 @@ export default function ResetPasswordPage() {
       return;
     }
 
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long!");
+      return;
+    }
+
+    toast.success("Password reset successful!");
     router.push("/auth/signin");
   };
 

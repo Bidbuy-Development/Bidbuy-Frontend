@@ -1,60 +1,62 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Label from "../UI/Label";
+import TextField from "../UI/TextField";
+import Input from "../UI/Input";
+import { toast } from "react-toastify";
 
 export default function ForgetPassword({
   formData,
   onFormDataChange,
   onSubmit,
 }) {
-  const handleInputChange = (e) => {
+  const handleInputChange = (field, value) => {
     onFormDataChange({
       ...formData,
-      [e.target.name]: e.target.value,
+      [field]: value,
     });
   };
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="text-left mb-14">
-        <h2 className="text-3xl font-normal text-[#2b2b2b] mb-6">
+    <section className="w-full space-y-6 sm:space-y-8">
+      <div className="mb-8 sm:mb-14 text-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-purple mb-2">
           Forgot Password?
         </h2>
-        <p className="text-[#2b2b2b]">
+        <p className="text-gray-700 text-sm sm:text-base">
           Enter email or phone number to get a reset link
         </p>
       </div>
 
-      {/* Reset Form */}
-      <form onSubmit={onSubmit} className="space-y-6">
-        <div>
-          <input
-            type="email"
-            name="email"
+      <form onSubmit={onSubmit} className="space-y-4 sm:space-y-6">
+        <TextField type="email" isRequired>
+          <Label className="block sm:hidden text-sm font-medium text-gray-700">
+            Email Address
+          </Label>
+          <Input
             placeholder="Enter your email address"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="w-full px-8 py-4 pr-12 rounded-xl bg-input-background focus:outline-none text-black"
-            required
+            className="text-sm sm:text-base"
+            value={formData.email || ""}
+            onChange={(e) => handleInputChange("email", e.target.value)}
           />
-        </div>
+        </TextField>
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
         >
           Send Reset Link
         </button>
       </form>
 
-      {/* Login Link */}
       <div className="text-center">
-        <Link href="/auth/signin" className="text-[#2b2b2b] hover:underline">
+        <Link
+          href="/auth/signin"
+          className="text-gray-700 hover:underline text-sm sm:text-base"
+        >
           Go back to Login
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
