@@ -7,7 +7,7 @@ import HamburgerMenu from "@/components/MenuTrigger";
 
 const Header = () => {
   return (
-    <header className="bg-background-color fixed top-0 left-0 w-full py-3 max-xl:py-5">
+    <header className="bg-background-color fixed top-0 left-0 w-full py-3 max-xl:py-5 z-50">
       <div className="@container flex justify-between items-center  max-w-[var(--container-max-width)] mx-auto px-3">
         <Logo />
         <Navbar />
