@@ -11,7 +11,6 @@ import WhoIsItFor from "@/components/Home/WhoIsItFor";
 export default function Home() {
   return (
     <>
-      <NavBar />
       <main>
         <Hero />
         <HowItWorks />
