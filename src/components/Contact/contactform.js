@@ -30,10 +30,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData((prevFormData) =>
-    Object.fromEntries(Object.keys(prevFormData).map((key) => [key, ""]))
-  );
-
+    setFormData({ name: '', email: '', complaint: '', message: '' }); 
     toast.success("Your form was submitted successfully!");
   };
 
@@ -98,11 +95,11 @@ export default function ContactForm() {
         type="submit"
         variant="primary"
         radius="2xl"
-        className="text-sm text-white !px-0 !py-1 lg:w-[183px] max-lg:[120px]"
+        className="text-sm text-white !px-0 !py-1 lg:w-[183px] !justify-start max-lg:[120px]"
       >
-        <span className="flex items-center gap-7">
+        <span className="flex pl-[10px] gap-7 items-center ">
           <FaArrowRight
-            className="bg-white rounded-full p-1 text-black ml-[-70px]"
+            className="bg-white rounded-full p-1 text-black "
             size={30}
           />
           Submit
