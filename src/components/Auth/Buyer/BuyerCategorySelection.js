@@ -81,33 +81,17 @@ export default function CategorySelection({ onNext, onPrev }) {
               key={category.id}
               onClick={() => toggleCategory(category.id)}
               className={`
-<<<<<<< HEAD
-                p-6 rounded-lg border-2 transition-all duration-200 
-                flex flex-col items-center gap-3 min-h-[120px]
-                ${isSelected
-                  ? "border-primary-purple shadow-md"
-                  : isDisabled
-                    ? "border-gray-200 bg-gray-50 cursor-not-allowed opacity-50"
-=======
+
                 p-3 sm:p-4 lg:p-6 rounded-lg border-2 transition-all duration-200 
                 flex flex-col items-center gap-2 sm:gap-3 min-h-[90px] sm:min-h-[110px] lg:min-h-[120px]
                 ${
                   isSelected
                     ? "border-primary-purple shadow-md"
->>>>>>> Development
                     : "border-gray-200 bg-[#9267A01C] hover:border-gray-300 hover:shadow-sm cursor-pointer"
                 }
               `}
             >
               <IconComponent
-<<<<<<< HEAD
-                className={`text-3xl ${isSelected ? "text-primary-purple" : category.color
-                  }`}
-              />
-              <span
-                className={`text-sm font-medium text-center ${isSelected ? "text-primary-purple" : "text-gray-700"
-                  }`}
-=======
                 className={`text-xl sm:text-2xl lg:text-3xl ${
                   isSelected ? "text-primary-purple" : category.color
                 }`}
@@ -116,7 +100,6 @@ export default function CategorySelection({ onNext, onPrev }) {
                 className={`text-xs sm:text-sm font-medium text-center ${
                   isSelected ? "text-primary-purple" : "text-gray-700"
                 }`}
->>>>>>> Development
               >
                 {category.name}
               </span>
