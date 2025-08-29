@@ -80,8 +80,8 @@ const FAQ = () => {
             <p className="text-xl">Send a direct email to our customer care.</p>
           </div>
         </div>
-        <div className="p-3">
-          <Button radius="none" className="w-full">
+        <div className="flex justify-center p-3">
+          <Button radius="2xl" className="w-[183px] !py-2 ">
             Send Email
           </Button>
         </div>

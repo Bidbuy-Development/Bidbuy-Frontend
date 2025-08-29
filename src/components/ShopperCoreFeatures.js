@@ -3,7 +3,7 @@ import CoreFeatures from "./Home/CoreFeature";
 
 const ShopperCoreFeatures = () => {
   return (
-    <div className="grid grid-cols-2 gap-4 px-2 lg:px-20 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 px-2 lg:px-20 lg:grid-cols-4 z-50">
       <CoreFeatures
         logo="/verified.svg"
         title="Receive Requests"

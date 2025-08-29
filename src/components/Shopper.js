@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Shoppers = () => {
   return (
-    <div className="text-center lg:space-y-3.5 flex flex-col items-center">
+    <div className="text-center lg:space-y-3.5 flex flex-col items-center ">
       <h1 className="text-xl lg:text-4xl font-bold lg:font-semibold">
         <span className="block">Become a shopper in</span>
         <span className="block">4 Simple Steps</span>
