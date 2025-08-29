@@ -1,5 +1,4 @@
 import React from "react";
-import SigninForm from "../Auth/SigninForm";
 
 const Hero = () => {
   return (
