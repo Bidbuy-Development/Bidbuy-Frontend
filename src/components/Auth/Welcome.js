@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import Button from "../UI/Button";
+import Button from "../UI/Link";
 import { FaCheck } from "react-icons/fa";
 import confetti from "canvas-confetti";
 

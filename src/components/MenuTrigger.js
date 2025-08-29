@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { IoMenu, IoClose } from "react-icons/io5";
+
+
 
 function HamburgerMenu() {
     const [open, setOpen] = useState(false);
@@ -24,9 +27,8 @@ function HamburgerMenu() {
                 aria-label="Toggle menu"
                 className="flex @4xl:hidden items-center justify-center w-[42px] h-[42px] relative"
             >
-                <svg width="42" height="41" viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.3335 10.25H35.521M7.3335 20.5H35.521M7.3335 30.75H35.521" stroke="#020202" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <IoMenu size='3rem' />
+
             </button>
 
             {open && <nav
@@ -38,9 +40,7 @@ function HamburgerMenu() {
                 `} >
 
                 <button onClick={() => setOpen(false)}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.8332 4.16675L4.1665 15.8334M4.1665 4.16675L15.8332 15.8334" stroke="#020202" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <IoClose size='1.5rem' />
                 </button>
 
                 <ul className="flex flex-col items-center gap-4 text-[1rem] font-medium">
