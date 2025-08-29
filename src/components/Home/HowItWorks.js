@@ -1,7 +1,6 @@
 "use client"; // Needed if in Next.js app directory
 
 import React, { useState } from "react";
-import CoreFeature from "./CoreFeature";
 import Button from "../UI/Button";
 import Users from "../Users";
 import Shoppers from "../Shoppers";
