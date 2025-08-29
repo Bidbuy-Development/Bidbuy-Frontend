@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Shoppers = () => {
   return (
-    <div className="text-center space-y-2 lg:space-y-3.5 flex flex-col items-center">
+    <div className="text-center lg:space-y-3.5 flex flex-col items-center">
       <h1 className="text-xl lg:text-4xl font-bold lg:font-semibold">
         <span className="block">Become a shopper in</span>
         <span className="block">4 Simple Steps</span>
@@ -13,7 +13,7 @@ const Shoppers = () => {
       </p>
 
       {/* Card Grid for shoppers section*/}
-      <div className="mt-5 mx-2 text-start grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-8 lg:w-3/4">
+      <div className="mt-5 mx-2 md:mx-18 text-start grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-8 lg:w-3/4">
         <Card
           imageSrc="/signup.svg"
           title="Sign Up"

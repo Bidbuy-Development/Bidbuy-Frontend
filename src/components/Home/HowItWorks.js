@@ -68,10 +68,10 @@ const HowItWorks = () => {
           }}
         >
           {/*displays the core features content for either users or shoppers */}
-          <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center pt-10">
+          <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center pt-15">
             {coreFeatures[activeTab].title}
           </h1>
-          <div className="mt-10 lg:mt-70">
+          <div className="mt-10 lg:mt-85">
             {coreFeatures[activeTab].description}
           </div>
         </div>

@@ -6,23 +6,23 @@ const ShopperCoreFeatures = () => {
     <div className="grid grid-cols-2 gap-4 px-2 lg:px-20 lg:grid-cols-4">
       <CoreFeatures
         logo="/verified.svg"
-        title="Badges"
-        description="Earn “Verified Pro” or “Top 5% Shopper” based on performance."
+        title="Receive Requests"
+        description="Get shopping requests based on your location and expertise."
       />
       <CoreFeatures
         logo="/payment.svg"
-        title="Escrow Payment"
-        description="Pay securely; funds are held until order delivery is confirmed."
+        title="Build Reputation"
+        description="Earn ratings and reviews to attract more buyers."
       />
       <CoreFeatures
         logo="/ratings.svg"
-        title="Receive Ratings"
-        description="Feedback affects ratings and badge eligibility."
+        title="Submit Bids"
+        description="Offer your price, delivery time, and any special services."
       />
       <CoreFeatures
         logo="/profiles.svg"
-        title="Shopper Profiles"
-        description="Public profile with bio, ratings, catalog, and badges."
+        title="Secure Earnings"
+        description="Payments are stored in your Bidbuy Wallet until withdrawal."
       />
     </div>
   );

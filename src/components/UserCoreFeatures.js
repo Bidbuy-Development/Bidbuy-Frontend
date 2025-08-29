@@ -7,7 +7,7 @@ const UserCoreFeatures = () => {
       <CoreFeatures
         logo="/verified.svg"
         title="Verified Shoppers"
-        description="Browse only KYC-verified shoppers."
+        description="Browse shoppers by category, view their catalogs and ratings"
       />
       <CoreFeatures
         logo="/payment.svg"
@@ -16,13 +16,13 @@ const UserCoreFeatures = () => {
       />
       <CoreFeatures
         logo="/ratings.svg"
-        title="Shopper Ratings"
-        description="Browse only KYC-verified shoppers."
+        title="Post Requests"
+        description="Create requests with item name, quantity, budget, and location"
       />
       <CoreFeatures
         logo="/profiles.svg"
-        title="Explore Profiles"
-        description="Browse only KYC-verified shoppers."
+        title="Compare Bids"
+        description="View bids with shopper name, rating, prices and accept bid."
       />
     </div>
   );
