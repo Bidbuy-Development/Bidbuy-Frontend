@@ -31,11 +31,7 @@
 
   /* Icon color */
   --color-background-black: #020202;
-
-  /* who is it for color */
-  --color-light-purple: #842e95;
 }
-
 
 html {
   scroll-behavior: smooth;
