@@ -1,15 +1,21 @@
 "use client";
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Verify from "../../../components/Auth/Verify";
 import { toast } from "react-toastify";
 
 export default function VerifyPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const type = searchParams.get("type") || "verification";
-  const role = searchParams.get("role");
-  const email = searchParams.get("email");
+  const [type, setType] = useState("verification");
+  const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    setType(urlParams.get("type") || "verification");
+    setRole(urlParams.get("role") || "");
+    setEmail(urlParams.get("email") || "");
+  }, []);
 
   const handleNext = () => {
     if (type === "reset" || type === "forgot-password") {

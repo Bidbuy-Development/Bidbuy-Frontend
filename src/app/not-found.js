@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../components/UI/Logo";
-import Button from "../components/UI/Button";
+import Button from "../components/UI/Link";
 
 export default function NotFound() {
   return (

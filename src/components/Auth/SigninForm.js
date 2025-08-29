@@ -1,15 +1,13 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaCheck } from "react-icons/fa";
 import Label from "../UI/Label";
 import TextField from "../UI/TextField";
 import Input from "../UI/Input";
-import Group from "../UI/Group";
 import Checkbox from "../UI/Checkbox";
 import Password from "../UI/Password";
+import { toast } from "react-toastify";
 
 export default function SigninForm() {
   const [formData, setFormData] = useState({
@@ -17,80 +15,95 @@ export default function SigninForm() {
     password: "",
   });
 
-  const handleInputChange = (newFormData) => {
-    setFormData(newFormData);
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     toast.success("Login successful!");
   };
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
+    <section className="w-full space-y-4 sm:space-y-6">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-primary-purple mb-2">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-purple mb-2">
           Welcome back
         </h2>
-        <p className="text-[#2b2b2b]">Log into existing account</p>
+        <p className="text-gray-700 text-sm sm:text-base">
+          Log into existing account
+        </p>
       </div>
 
-      {/* Login Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         <TextField type="email" isRequired>
-          <Label>Email</Label>
-          <Input placeholder="Email" />
+          <Label className="block sm:hidden text-sm font-medium text-gray-700">
+            Email
+          </Label>
+          <Input
+            placeholder="Email"
+            className="text-sm sm:text-base"
+            value={formData.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+          />
         </TextField>
 
         <TextField type="password" isRequired>
-          <Label>Password</Label>
-          <Password />
+          <Label className="block sm:hidden text-sm font-medium text-gray-700">
+            Password
+          </Label>
+          <Password
+            className="text-sm sm:text-base"
+            value={formData.password}
+            onChange={(e) => handleInputChange("password", e.target.value)}
+          />
         </TextField>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between space-y-2 sm:space-y-0">
           <Link
             href="/auth/forgot-password"
-            className="text-[#2b2b2b] hover:underline"
+            className="text-gray-700 hover:underline text-sm sm:text-base"
           >
             Forgot password?
           </Link>
 
-          <Checkbox>Remember me</Checkbox>
+          <Checkbox className="text-sm sm:text-base">Remember me</Checkbox>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-4 rounded-xl font-medium hover:opacity-90 transition-opacity"
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
         >
           Log in
         </button>
       </form>
 
-      {/* Sign up link */}
-      <div className="text-center">
-        <span className="text-light-gray">{"Don't have an account? "}</span>
+      <div className="text-center text-sm sm:text-base">
+        <span className="text-gray-600">{"Don't have an account? "}</span>
         <Link
           href="/auth/signup"
-          className="text-primary-purple hover:underline"
+          className="text-primary-purple hover:underline font-medium"
         >
           Sign up
         </Link>
       </div>
 
-      {/* Social login options */}
       <div className="space-y-3">
-        <button className="w-full flex items-center justify-center px-4 py-3 rounded-xl bg-input-background transition-colors text-[#505050]">
+        <button className="w-full flex items-center justify-center px-4 py-3 rounded-xl bg-input-background transition-colors text-gray-600 text-sm sm:text-base">
           <Image
             src="/Google.svg"
             alt="Google logo"
-            width={20}
-            height={20}
-            className="mr-2"
+            width={18}
+            height={18}
+            className="mr-2 sm:w-5 sm:h-5"
           />
           Sign up with Google
         </button>
       </div>
-    </div>
+    </section>
   );
 }

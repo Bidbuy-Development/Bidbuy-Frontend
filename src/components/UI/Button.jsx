@@ -26,7 +26,7 @@ const Button = ({
   const radiusClass = radiusMap[radius] || "rounded-full";
   return (
     <button
-      className={`${btnType[variant]} py-[10px] px-[39px] flex items-center gap-2 justify-center ${radiusClass} ${className}`}
+      className={`${btnType[variant]}  flex items-center gap-2 justify-center ${radiusClass} ${className}`}
       {...props}
     >
       <span>{children}</span>

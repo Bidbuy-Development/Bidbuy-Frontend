@@ -5,6 +5,7 @@ import contactImage from "../../../public/contact.jpg"
 
 function Contact() {
   return (
+
     <section className="relative max-w-max-width md:h-[641px] bg-[url('/contact.jpg')] bg-cover bg-center max-md:h-[741px]">
       {/* Black overlay */}
       <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
@@ -24,6 +25,7 @@ function Contact() {
           </div> 
         </div>
       </div>
+
     </section>
   );
 }
