@@ -33,16 +33,16 @@ const FAQ = () => {
 
   return (
     <section
-      className="grid md:grid-cols-1 lg:grid-cols-2 p-5 lg:p-20 gap-20"
+      className="grid md:grid-cols-1 max-w-7xl lg:grid-cols-2 mx-auto p-5 lg:p-20 gap-40"
       aria-label="FAQ Section"
     >
       <article className="space-y-5">
         <header>
-          <h1 className="text-3xl lg:text-5xl lg:pr-14 font-semibold">
+          <h1 className="text-2xl lg:text-4xl lg:pr-14 font-semibold">
             Frequently Asked Questions – Bidbuy
           </h1>
         </header>
-        <dl className="space-y-3 md:px-20 lg:px-0">
+        <dl className="space-y-3 mt-20 md:px-20 lg:px-0">
           {faqItems.map(({ question, answer }, index) => (
             <div
               className="collapse collapse-plus border border-base-300 bg-[#E6DDE9]"
@@ -63,13 +63,13 @@ const FAQ = () => {
       </article>
 
       <aside className="hidden lg:flex flex-col justify-between gap-5 h-full">
-        <div className="space-y-4">
-          <figure className="w-full h-60 relative">
+        <div className="space-y-4 relative">
+          <figure className="w-full h-70">
             <Image
               src="/faq.svg"
               alt="FAQ Illustration"
               fill
-              className="object-cover"
+              className="object-cover rounded-2xl"
             />
             <figcaption className="sr-only">
               Illustration for frequently asked questions
@@ -80,8 +80,8 @@ const FAQ = () => {
             <p className="text-xl">Send a direct email to our customer care.</p>
           </div>
         </div>
-        <div className="p-3">
-          <Button radius="none" className="w-full">
+        <div className="">
+          <Button radius="none" className="w-[50%] h-15 text-xl mx-auto">
             Send Email
           </Button>
         </div>
