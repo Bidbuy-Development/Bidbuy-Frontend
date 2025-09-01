@@ -34,7 +34,7 @@ const HowItWorks = () => {
 
   return (
     <>
-      <section className="min-h-[100vh] pt-10 lg:pt-20">
+      <section className="min-h-[100vh] md:min-h-[70vh] lg:min-h-[100vh] pt-10 lg:pt-20">
         {/* map through the tabs array to display users and shoppers button */}
         <div className="space-x-2 flex justify-center mb-12 lg:mb-5">
           {tabs.map((tab, index) => (
@@ -56,21 +56,20 @@ const HowItWorks = () => {
         {/* display content for either users or shoppers */}
         <div className="mt-4">{tabs[activeTab].content}</div>
       </section>
-      {/* <CoreFeature /> */}
 
       {/* Core Features Section */}
-      <div className="mt-18 mb-10 lg:mx-2">
+      <div className="my-10 md:mt-0 lg:mt-12 md:mb-10">
         <div
-          className="bg-cover bg-center bg-no-repeat h-screen w-full"
+          className="bg-cover bg-center bg-no-repeat h-screen md:h-3/4 w-full"
           style={{
             backgroundImage: `url(${coreFeatures[activeTab].bgImage})`,
           }}
         >
           {/*displays the core features content for either users or shoppers */}
-          <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center pt-15">
+          <h1 className="text-background-color font-bold text-4xl text-center pt-15 md:pt-8">
             {coreFeatures[activeTab].title}
           </h1>
-          <div className="mt-10 lg:mt-85">
+          <div className="mt-20 md:pb-10 lg:mt-80">
             {coreFeatures[activeTab].description}
           </div>
         </div>
