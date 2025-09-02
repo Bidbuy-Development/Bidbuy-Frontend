@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Label from "../UI/Label";
@@ -8,12 +9,18 @@ import Input from "../UI/Input";
 import Checkbox from "../UI/Checkbox";
 import Password from "../UI/Password";
 import { toast } from "react-toastify";
+import useAuthStore from "../../stores/useAuthStore";
 
 export default function SigninForm() {
+  const router = useRouter();
+  const { signin, isLoading, user } = useAuthStore();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -22,10 +29,36 @@ export default function SigninForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    toast.success("Login successful!");
+
+    if (!formData.email || !formData.password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    try {
+      const result = await signin(formData.email, formData.password);
+
+      if (result.success) {
+        // Redirect based on user role or default to dashboard
+        if (result.data.user && result.data.user.role) {
+          let userRole = result.data.user.role.toLowerCase();
+
+          // Map Vendor to shopper for routing
+          if (userRole === "vendor") {
+            userRole = "shopper";
+          }
+
+          router.push(`/${userRole}`);
+        } else {
+          router.push("/buyer"); // Default redirect
+        }
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("An unexpected error occurred");
+    }
   };
 
   return (
@@ -63,7 +96,7 @@ export default function SigninForm() {
           />
         </TextField>
 
-        <div className="flex justify-between space-y-2 sm:space-y-0">
+        <div className="flex justify-between items-center space-y-2 sm:space-y-0">
           <Link
             href="/auth/forgot-password"
             className="text-gray-700 hover:underline text-sm sm:text-base"
@@ -71,14 +104,21 @@ export default function SigninForm() {
             Forgot password?
           </Link>
 
-          <Checkbox className="text-sm sm:text-base">Remember me</Checkbox>
+          <Checkbox
+            className="text-sm sm:text-base"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+          >
+            Remember me
+          </Checkbox>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+          disabled={isLoading}
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Log in
+          {isLoading ? "Signing in..." : "Log in"}
         </button>
       </form>
 

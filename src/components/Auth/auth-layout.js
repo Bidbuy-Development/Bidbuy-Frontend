@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Logo from "../UI/Logo";
 
-export default function AuthLayout({ children }) {
+function AuthLayout({ children }) {
   const router = useRouter();
 
   const handleBack = () => {
@@ -76,3 +76,5 @@ export default function AuthLayout({ children }) {
     </div>
   );
 }
+
+export default AuthLayout;
