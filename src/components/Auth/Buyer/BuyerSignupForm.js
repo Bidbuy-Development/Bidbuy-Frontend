@@ -10,6 +10,7 @@ export default function BuyerSignupForm({
   formData,
   onFormDataChange,
   onSubmit,
+  isLoading = false,
 }) {
   const handleInputChange = (field, value) => {
     onFormDataChange(field, value);
@@ -79,9 +80,10 @@ export default function BuyerSignupForm({
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base mt-4 sm:mt-6"
+          disabled={isLoading}
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base mt-4 sm:mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Create Buyer Account
+          {isLoading ? "Creating Account..." : "Create Buyer Account"}
         </button>
       </form>
 

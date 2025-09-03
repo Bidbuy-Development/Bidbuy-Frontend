@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Verify from "../../../components/Auth/Verify";
 import { toast } from "react-toastify";
+import useAuthStore from "../../../stores/useAuthStore";
 
 export default function VerifyPage() {
   const router = useRouter();
   const [type, setType] = useState("verification");
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
+  const { clearAuth } = useAuthStore();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -19,10 +21,8 @@ export default function VerifyPage() {
 
   const handleNext = () => {
     if (type === "reset" || type === "forgot-password") {
-      toast.success("Password reset code verified");
       router.push(`/auth/reset-password?email=${encodeURIComponent(email)}`);
     } else if (type === "signup") {
-      toast.success("Email verified successfully");
       if (role === "buyer") {
         router.push("/auth/buyer-setup");
       } else if (role === "shopper") {
@@ -31,12 +31,14 @@ export default function VerifyPage() {
         router.push("/auth/signin");
       }
     } else {
-      toast.success("Email verified successfully");
       router.push("/auth/signin");
     }
   };
 
   const handlePrev = () => {
+    // Clear auth data when going back
+    clearAuth();
+
     if (type === "reset" || type === "forgot-password") {
       router.push("/auth/forgot-password");
     } else if (type === "signup") {

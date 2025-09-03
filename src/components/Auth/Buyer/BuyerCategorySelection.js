@@ -11,7 +11,7 @@ import {
   FaPlane,
 } from "react-icons/fa";
 import { GiRunningShoe } from "react-icons/gi";
-import Button from "../../UI/Link";
+import Button from "../../UI/Button";
 
 const categories = [
   { id: "dress", name: "Dress", icon: FaTshirt, color: "text-pink-500" },
