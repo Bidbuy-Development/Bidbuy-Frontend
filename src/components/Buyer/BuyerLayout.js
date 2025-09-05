@@ -11,7 +11,7 @@ const BuyerLayout = ({ children }) => {
       <Sidebar userType="buyer" onExpandChange={setSidebarExpanded} />
       <section
         className={`transition-all duration-300 min-h-screen ${
-          sidebarExpanded ? "ml-64" : "ml-16"
+          sidebarExpanded ? "ml-64" : "ml-24"
         }`}
       >
         {children}
