@@ -11,7 +11,7 @@ const WhoIsItFor = () => {
       <div className=" lg:flex lg:gap-[50px]">
         <div>
       <h2 className="text-shade-text text-[42px] max-lg:text-[32px] font-semibold lg:mb-[40px] max-lg:text-center" >Who is it for</h2>
-      <div className="flex flex-col  items-center gap-[30px] lg:h-[787px] lg:w-[502px]">   
+      <div className="flex flex-col  items-center gap-[30px] lg:h-[787px] lg:w-[502px] max-md:ml-[25px]">   
       <InfoCard
           info={{
             title: "Buyer",
@@ -24,7 +24,7 @@ const WhoIsItFor = () => {
      </div>
 
 {/* Shopper */}
-  <div className="flex flex-col  items-center gap-[10px] lg:h-[757px] lg:w-[502px] max-lg:flex-col-reverse max-lg:mt-[70px] max-lg:gap-[20px]">
+  <div className="flex flex-col items-center gap-[15px] lg:h-[757px] lg:w-[502px] max-lg:flex-col-reverse max-lg:mt-[70px] max-lg:gap-[20px] max-md:ml-[25px]">
       <ClipImage image="/shopper.png"/>
       <InfoCard
           info={{

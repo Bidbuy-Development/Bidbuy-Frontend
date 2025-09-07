@@ -6,7 +6,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 export default function ErrorMessage({ className = "" }) {
   return (
     <FieldError
-      className={`flex items-center gap-1 text-primary-purple text-sm leading-none h-4 ${className}`}
+      className={`flex items-center gap-1 text-white text-sm leading-none h-4 ${className}`}
     >
       {({ validationErrors }) =>
         validationErrors?.length ? (

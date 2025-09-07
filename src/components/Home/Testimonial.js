@@ -13,7 +13,7 @@ const Testimonial = () => {
   ];
   return (
     <section className="">
-      <div className="flex flex-col gap-[20px] mx-20  max-lg:mx-15">
+      <div className="flex flex-col gap-[45px] max-md:gap-[55px] mx-[80px]  max-md:mx-[20px]">
         <div className="flex justify-between ">
           <div className="max-w-[350px]">
             <p className="text-primary-gold text-[20px]">Potential users</p>
@@ -28,7 +28,7 @@ const Testimonial = () => {
 
          <div className="w-[190px]">
          <AvatarGroup avatars={people} />
-       </div>
+         </div>
         <div className="lg:flex gap-[24px] max-lg:space-y-[24px]">
           <Quote 
           info = {{

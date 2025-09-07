@@ -11,16 +11,16 @@ function SocialIcons() {
 
         <p className="text-[17px] md:text-center text-white font-[500] ">Contact us</p>
 
-        <div className="flex md:gap-[12px] max-md:gap-[29px]">
+        <div className="flex md:gap-[12px] max-md:gap-[17px]">
 
-          <a href="https://facebook.com"  target="_blank" rel="noopener noreferrer"><FaFacebook className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px]" /> </a> 
+          <a href="https://facebook.com"  target="_blank" rel="noopener noreferrer"><FaFacebook className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px] max-md:h-[27px]" /> </a> 
          
-         <a href="https://instagram.com"  target="_blank" rel="noopener noreferrer"> <RiInstagramFill className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px]" /></a>
+         <a href="https://instagram.com"  target="_blank" rel="noopener noreferrer"> <RiInstagramFill className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px] max-md:h-[27px]" /></a>
 
          
-          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"> <AiFillTikTok className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px]" /> </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"> <AiFillTikTok className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px] max-md:h-[27px]" /> </a>
                 
-           <a href="https://x.com" target="_blank" rel="noopener noreferrer"> <BsTwitterX className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px]" /></a>
+           <a href="https://x.com" target="_blank" rel="noopener noreferrer"> <BsTwitterX className="text-white md:w-[28px] md:h-[20px] max-md:w-[37px] max-md:h-[27px]" /></a>
         </div>
 
 

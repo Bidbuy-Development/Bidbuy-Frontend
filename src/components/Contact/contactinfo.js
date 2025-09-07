@@ -7,17 +7,17 @@ function ContactInfo(){
 
     <div className=" flex flex-col item-center md:mt-30 gap-2 md:backdrop-blur-3xl md:backdrop-brightness-150 md:backdrop-contrast-50  mx-auto w-auto text-white md:border-2 md:border-primary-purple rounded-[20px] lg:py-15 lg:px-15  max-md:justify-center max-lg:py-13 max-lg:px-13 ">
 
-        <div className=" flex justify-center   ">
+        <div className=" flex justify-center  gap-2    ">
 
-          <FaPhoneAlt  className=" text-white  w-[1rem] " />
+          <FaPhoneAlt  className=" text-primary-purple  w-[2rem] " />
            <a className="italic font-bold text-[15px] hover:underline" href="tel:+2348040000002">
                +234 8040 000 002
             </a>
 
         </div> 
-        <div className=" flex justify-center">
+        <div className=" flex justify-center gap-2">
 
-        <MdOutlineMail  className="fold-bold text-white  w-[1rem] " />
+        <MdOutlineMail  className="fold-bold text-primary-purple  w-[2rem] " />
         <a className="italic font-bold text-[15px] hover:underline" href = "mailto:bidbuy123@gmail.com">
           bidbuy123@gmail.com
         </a>

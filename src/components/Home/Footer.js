@@ -9,8 +9,8 @@ import { FaApple } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <section className="w-full bg-primary-purple pt-[120px] pb-[40px]">
-      <div className="md:mx-[50px] md:mt-[0px] flex flex-col">
+    <section className="w-full bg-primary-purple md:pt-[120px] max-md:pt-[50px] pb-[40px]">
+      <div className="md:mx-[50px] max-md:mx-[20px] flex flex-col ">
           
        <div className="md:flex md:justify-between max-md:space-y-3">      
         
@@ -19,12 +19,12 @@ const Footer = () => {
          <div className="md:flex gap-2">
 
           <DownloadLink info={{
-            link:"https://playstore.com",
+            link:"https://play.google.com/store/apps/details?id=com.example.app",
             content:"Download on Play store",
             icon:<IoLogoGooglePlaystore className="w-[24px] h-[24px]" />
           }} />
           <DownloadLink info={{
-            link:"https://appstore.com",
+            link:"https://apps.apple.com/us/app/example-app/id123456789",
             content:"Download on App store",
             icon:<FaApple className="w-[24px] h-[24px]" />
           }}/>

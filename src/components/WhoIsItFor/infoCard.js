@@ -8,7 +8,7 @@ const InfoCard = ({ info }) => {
         <h2 className="text-[30px] max-lg:text-[24px] font-semibold text-primary-purple">{info.title}</h2>
         <p className="text-shade-text text-[20px] max-lg:text-[18px] leading-[29px] max-lg:leading-[24px] ">{info.description}</p>
         
-        <Link href = {info.buttonLink}>
+        <Link href = {info.buttonLink} className="max-lg:mb-[50px]">
         <Button    variant="primary" radius="full" 
          className="text-sm text-white !px-0 !py-2 w-[148px] cursor-pointer">
           Sign Up
