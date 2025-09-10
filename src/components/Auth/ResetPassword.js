@@ -8,6 +8,7 @@ export default function ResetPassword({
   formData,
   onFormDataChange,
   onSubmit,
+  isLoading = false,
 }) {
   const handleInputChange = (field, value) => {
     onFormDataChange(field, value);
@@ -53,9 +54,10 @@ export default function ResetPassword({
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+          disabled={isLoading}
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Reset Password
+          {isLoading ? "Resetting..." : "Reset Password"}
         </button>
       </form>
 

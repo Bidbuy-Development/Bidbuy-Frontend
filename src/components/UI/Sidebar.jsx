@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import {
   RiDashboardLine,
   RiFileTextLine,
@@ -9,6 +10,7 @@ import {
   RiQuestionLine,
   RiLogoutBoxLine,
   RiShoppingBagLine,
+  RiMoneyDollarCircleLine,
 } from "react-icons/ri";
 import Logo from "./Logo";
 import { toast } from "react-toastify";
@@ -19,7 +21,7 @@ const cn = (...classes) => {
 };
 
 const buyerSidebarItems = [
-  { icon: RiDashboardLine, label: "Dashboard", isActive: true, href: "/buyer" },
+  { icon: RiDashboardLine, label: "Dashboard", href: "/buyer" },
   { icon: RiFileTextLine, label: "Request", href: "/buyer/request" },
   { icon: RiBellLine, label: "Notification", href: "/buyer/notification" },
   { icon: RiSettings4Line, label: "Setting", href: "/buyer/setting" },
@@ -31,11 +33,15 @@ const shopperSidebarItems = [
   {
     icon: RiDashboardLine,
     label: "Dashboard",
-    isActive: true,
     href: "/shopper",
   },
   { icon: RiFileTextLine, label: "Request", href: "/shopper/request" },
   { icon: RiShoppingBagLine, label: "My Products", href: "/shopper/products" },
+  {
+    icon: RiMoneyDollarCircleLine,
+    label: "Transactions",
+    href: "/shopper/transactions",
+  },
   { icon: RiSettings4Line, label: "Setting", href: "/shopper/setting" },
   { icon: RiQuestionLine, label: "Support", href: "/shopper/support" },
   { icon: RiLogoutBoxLine, label: "Log out", isLogout: true },
@@ -43,6 +49,7 @@ const shopperSidebarItems = [
 
 export default function Sidebar({ userType = "buyer", onExpandChange }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const pathname = usePathname();
 
   const sidebarItems =
     userType === "buyer" ? buyerSidebarItems : shopperSidebarItems;
@@ -53,8 +60,16 @@ export default function Sidebar({ userType = "buyer", onExpandChange }) {
   };
 
   const handleLogout = () => {
-   toast.success("Logged out successfully");
-   window.location.href = "/auth/signin";
+    toast.success("Logged out successfully");
+    window.location.href = "/auth/signin";
+  };
+
+  // Function to check if a path is active
+  const isActivePath = (itemHref) => {
+    if (itemHref === "/buyer" || itemHref === "/shopper") {
+      return pathname === itemHref;
+    }
+    return pathname.startsWith(itemHref);
   };
 
   return (
@@ -81,12 +96,14 @@ export default function Sidebar({ userType = "buyer", onExpandChange }) {
           .filter((item) => !item.isLogout)
           .map((item, index) => {
             const Icon = item.icon;
+            const isActive = isActivePath(item.href);
             return (
-              <div
+              <a
+                href={item.href}
                 key={index}
                 className={cn(
                   "flex items-center gap-3 px-3 py-3 rounded-lg cursor-pointer transition-all duration-200",
-                  item.isActive
+                  isActive
                     ? "bg-gradient-to-r from-[rgba(222,192,232,0.58)] to-[rgba(124,107,130,0.3364)] text-[#4B0561]"
                     : "text-gray-700 hover:bg-gray-100"
                 )}
@@ -100,7 +117,7 @@ export default function Sidebar({ userType = "buyer", onExpandChange }) {
                 >
                   {item.label}
                 </span>
-              </div>
+              </a>
             );
           })}
       </nav>

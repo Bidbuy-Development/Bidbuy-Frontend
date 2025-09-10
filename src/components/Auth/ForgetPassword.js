@@ -3,12 +3,12 @@ import Link from "next/link";
 import Label from "../UI/Label";
 import TextField from "../UI/TextField";
 import Input from "../UI/Input";
-import { toast } from "react-toastify";
 
 export default function ForgetPassword({
   formData,
   onFormDataChange,
   onSubmit,
+  isLoading = false,
 }) {
   const handleInputChange = (field, value) => {
     onFormDataChange({
@@ -43,9 +43,10 @@ export default function ForgetPassword({
 
         <button
           type="submit"
-          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+          disabled={isLoading}
+          className="w-full bg-primary-purple text-white py-3 sm:py-4 rounded-xl font-medium hover:opacity-90 transition-opacity text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Send Reset Link
+          {isLoading ? "Sending..." : "Send Reset Link"}
         </button>
       </form>
 

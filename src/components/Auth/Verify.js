@@ -14,7 +14,13 @@ export default function Verify({
   const [timeLeft, setTimeLeft] = useState(120);
   const [canResend, setCanResend] = useState(false);
   const inputRefs = useRef([]);
-  const { resendVerificationCode, isLoading, verifyEmail } = useAuthStore();
+  const {
+    resendVerificationCode,
+    isLoading,
+    verifyEmail,
+    verifyResetOTP,
+    setResetData,
+  } = useAuthStore();
 
   // Timer effect
   useEffect(() => {
@@ -72,7 +78,23 @@ export default function Verify({
       const otpCode = newCode.join("");
 
       try {
-        const result = await verifyEmail(email, otpCode);
+        let result;
+
+        // Use different verification methods based on type
+        if (type === "reset" || type === "forgot-password") {
+          result = await verifyResetOTP(email, otpCode);
+
+          // Store reset token if verification successful
+          if (result?.success && result?.data?.resetToken) {
+            setResetData({
+              email: email,
+              resetToken: result.data.resetToken,
+            });
+          }
+        } else {
+          result = await verifyEmail(email, otpCode);
+        }
+
         console.log(email, otpCode);
         console.log("Verification result:", result);
 

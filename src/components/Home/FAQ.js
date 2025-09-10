@@ -1,8 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../UI/Button";
+import { BsPlus } from "react-icons/bs";
 
 const FAQ = () => {
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
   const faqItems = [
     {
       question: "What is Bidbuy?",
@@ -32,60 +39,99 @@ const FAQ = () => {
   ];
 
   return (
-    <section
-      className="grid md:grid-cols-1 lg:grid-cols-2 p-5 lg:p-20 gap-20"
-      aria-label="FAQ Section"
-    >
-      <article className="space-y-5">
-        <header>
-          <h1 className="text-3xl lg:text-5xl lg:pr-14 font-semibold">
-            Frequently Asked Questions – Bidbuy
-          </h1>
-        </header>
-        <dl className="space-y-3 md:px-20 lg:px-0">
-          {faqItems.map(({ question, answer }, index) => (
-            <div
-              className="collapse collapse-plus border border-base-300 bg-[#E6DDE9]"
-              key={index}
-            >
-              <input
-                type="radio"
-                name="my-accordion-3"
-                // defaultChecked={index === 0}
-              />
-              <dt className="collapse-title font-semibold text-sm lg:text-[16px]">
-                {question}?
-              </dt>
-              <dd className="collapse-content text-sm">{answer}.</dd>
-            </div>
-          ))}
-        </dl>
-      </article>
+    <section className="p-4 sm:p-8 lg:p-12 relative min-h-screen">
+      <div className="max-w-9xl mx-auto">
+        {/* Star decoration - positioned absolutely to the whole container */}
+        <div className="absolute right-0 top-1/3 -translate-y-1/2 z-10 lg:block hidden">
+          <Image
+            src="/starhide.png"
+            alt="Star decoration"
+            width={50}
+            height={50}
+          />
+        </div>
 
-      <aside className="hidden lg:flex flex-col justify-between gap-5 h-full">
-        <div className="space-y-4">
-          <figure className="w-full h-60 relative">
-            <Image
-              src="/faq.svg"
-              alt="FAQ Illustration"
-              fill
-              className="object-cover"
-            />
-            <figcaption className="sr-only">
-              Illustration for frequently asked questions
-            </figcaption>
-          </figure>
-          <div className="text-center">
-            <h4 className="text-xl font-semibold">Have more questions?</h4>
-            <p className="text-xl">Send a direct email to our customer care.</p>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20">
+          {/* FAQ Content */}
+          <article className="space-y-6 md:space-y-8">
+            <header>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl xl:pr-5 font-semibold leading-tight">
+                Frequently Asked Questions - Bidbuy
+              </h1>
+            </header>
+
+            <dl className="space-y-3 md:space-y-4">
+              {faqItems.map(({ question, answer }, index) => (
+                <div
+                  key={index}
+                  className="border border-gray-200 rounded-lg bg-[#E6DDE9] overflow-hidden transition-all duration-300 hover:shadow-md"
+                >
+                  <dt>
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full px-4 md:px-6 py-4 md:py-5 text-left flex justify-between items-center font-semibold text-sm md:text-base lg:text-lg"
+                      aria-expanded={openFAQ === index}
+                    >
+                      <span>{question}?</span>
+                      <BsPlus
+                        className={`w-8 h-8 transition-transform duration-300 ${
+                          openFAQ === index ? "rotate-45" : ""
+                        }`}
+                      />
+                    </button>
+                  </dt>
+                  <dd
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openFAQ === index
+                        ? "max-h-40 opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="px-4 md:px-6 pb-4 md:pb-5 text-sm md:text-base text-gray-700 leading-relaxed">
+                      {answer}.
+                    </div>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </article>
+
+          {/* Right Side Content with Images */}
+          <aside className="flex flex-col justify-between gap-6 md:gap-8 h-full">
+            <div className="space-y-6 md:space-y-8">
+              <figure className="relative w-full h-48 md:h-60 lg:h-72 xl:h-80 rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src="/faq.svg"
+                  alt="FAQ Illustration"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <figcaption className="sr-only">
+                  Illustration for frequently asked questions
+                </figcaption>
+              </figure>
+
+              <div className="text-center space-y-3">
+                <h4 className="text-lg md:text-xl lg:text-2xl font-semibold">
+                  Have more questions?
+                </h4>
+                <p className="text-base md:text-lg lg:text-xl text-gray-600">
+                  Send a direct email to our customer care.
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full mt-auto flex justify-center">
+              <Button
+                radius="none"
+                className="w-full px-8 py-3 md:px-10 md:py-4 text-sm md:text-base font-medium hover:shadow-lg transition-all duration-300"
+              >
+                Send Email
+              </Button>
+            </div>
+          </aside>
         </div>
-        <div className="flex justify-center p-3">
-          <Button radius="2xl" className="w-[183px] !py-2 ">
-            Send Email
-          </Button>
-        </div>
-      </aside>
+      </div>
     </section>
   );
 };

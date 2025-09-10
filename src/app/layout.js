@@ -13,6 +13,7 @@ export const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   fallback: ["system-ui", "arial"],
+  variable: "--font-outfit-sans",
 });
 
 export const metadata = {
@@ -23,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} ${outfit.variable}`}>
         {children}
         <ToastContainer
           position="top-center"

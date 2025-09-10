@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  TextArea,
-  FieldError,
-} from "react-aria-components";
-import TextField from "../UI/TextField";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import Label from "../UI/Label";
+import { TextArea, FieldError } from "react-aria-components";
+import TextField from "../../UI/TextField";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
+import Label from "../../UI/Label";
 import { FaArrowRight } from "react-icons/fa";
 import { toast } from "react-toastify";
 import ErrorMessage from "./ErrorMessage";
@@ -30,7 +27,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({ name: '', email: '', complaint: '', message: '' }); 
+    setFormData({ name: "", email: "", complaint: "", message: "" });
     toast.success("Your form was submitted successfully!");
   };
 
@@ -45,7 +42,7 @@ export default function ContactForm() {
       >
         <Label className="not-sr-only text-white block">Name</Label>
         <Input className="border w-full rounded-xl p-2 bg-white" />
-        <ErrorMessage/>
+        <ErrorMessage />
       </TextField>
 
       {/* Email */}
@@ -58,7 +55,7 @@ export default function ContactForm() {
       >
         <Label className="not-sr-only text-white block">Email</Label>
         <Input className="border w-full rounded-xl p-2 bg-white" />
-        <ErrorMessage/>
+        <ErrorMessage />
       </TextField>
 
       {/* Complaint */}
@@ -70,7 +67,7 @@ export default function ContactForm() {
       >
         <Label className="not-sr-only text-white block">Complaint</Label>
         <Input className="border w-full rounded-xl p-2 bg-white" />
-        <ErrorMessage/>
+        <ErrorMessage />
       </TextField>
 
       {/* Message */}
@@ -87,23 +84,21 @@ export default function ContactForm() {
           minLength={10}
           className="border p-2 focus:outline-none text-primary-purple rounded-xl bg-white w-full"
         />
-        <ErrorMessage/>
+        <ErrorMessage />
       </TextField>
 
       {/* Submit Button */}
       <Button
         type="submit"
         variant="primary"
-        radius="2xl"
-        className="text-sm text-white !px-0 !py-1 lg:w-[183px] !justify-start max-lg:[120px]"
+        radius="xl"
+        className="w-fill px-4 py-3 flex items-center gap-3 text-white hover:shadow-lg transition-all duration-300"
       >
-        <span className="flex pl-[10px] gap-7 items-center ">
-          <FaArrowRight
-            className="bg-white rounded-full p-1 text-black "
-            size={30}
-          />
-          Submit
-        </span>
+        {/* <FaArrowRight
+          className="bg-white rounded-full p-1 text-black"
+          size={24}
+        /> */}
+        Submit
       </Button>
     </form>
   );

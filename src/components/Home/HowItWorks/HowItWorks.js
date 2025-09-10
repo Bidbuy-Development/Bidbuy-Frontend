@@ -1,12 +1,11 @@
 "use client"; // Needed if in Next.js app directory
 
 import React, { useState } from "react";
-import Button from "../UI/Button";
-import Users from "../Users";
-import Shoppers from "../Shopper";
-import UserCoreFeatures from "../UserCoreFeatures";
-import ShopperCoreFeatures from "../ShopperCoreFeatures";
-import CoreFeature from "./CoreFeature";
+import Button from "../../UI/Button";
+import Users from "./Users";
+import Shoppers from "./Shopper";
+import UserCoreFeatures from "../CoreFeatures/UserCoreFeatures";
+import ShopperCoreFeatures from "../CoreFeatures/ShopperCoreFeatures";
 
 /* main logic for the how it works section */
 const HowItWorks = () => {
@@ -35,9 +34,9 @@ const HowItWorks = () => {
 
   return (
     <>
-      <section className="min-h-[100vh] pt-10 lg:pt-20">
+      <section className="min-h-screen">
         {/* map through the tabs array to display users and shoppers button */}
-        <div className="space-x-2 flex justify-center mb-12 lg:mb-5">
+        <div className="space-x-2 flex justify-center">
           {tabs.map((tab, index) => (
             <Button
               key={index}
@@ -55,24 +54,24 @@ const HowItWorks = () => {
         {/* display content for either users or shoppers */}
         <div className="mt-4">{tabs[activeTab].content}</div>
       </section>
-      {/* <CoreFeature />
-      <CoreFeature /> */}
 
       {/* Core Features Section */}
-      <div className="mt-18 mb-10 lg:mx-2">
+      <div className="mt-18 mb-10 min-h-screen">
         <div
-          className="bg-cover bg-center bg-no-repeat h-screen w-full"
+          className="relative bg-cover bg-center bg-no-repeat h-screen w-full flex flex-col"
           style={{
             backgroundImage: `url(${coreFeatures[activeTab].bgImage})`,
           }}
         >
           {/*displays the core features content for either users or shoppers */}
-          <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center pt-15">
-            {coreFeatures[activeTab].title}
-          </h1>
-          <div className="mt-10 lg:mt-85">
-            {coreFeatures[activeTab].description}
+          <div className="absolute top-16 left-0 right-0">
+            <h1 className="text-background-color font-bold text-xl lg:text-4xl text-center">
+              {coreFeatures[activeTab].title}
+            </h1>
           </div>
+
+          {/* Content positioned at bottom */}
+          {coreFeatures[activeTab].description}
         </div>
       </div>
     </>

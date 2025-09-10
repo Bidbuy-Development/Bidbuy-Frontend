@@ -4,6 +4,7 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-outfit: var(--font-outfit-sans);
 
   /* Primary Colors */
   --color-primary-purple: #9267a0;
@@ -12,7 +13,6 @@
   /* Secondary Colors */
   --color-text-title: #333333;
   --color-secondary-text: #999999;
-  --color-about-text: #000000;
 
   /* Secondary Background Colors */
   --color-background-card: #f2f2f2;
@@ -26,21 +26,20 @@
   /* Max Width */
   --container-max-width: 1280px;
 
-  /* Icon color */
-  --color-background-black: #020202;
-
-  /* Icon color */
-  --color-background-black: #020202;
+  /* Container Padding */
+  --spacing-main-inline-padding: 8px;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
 
 body {
   background-color: var(--color-background-color);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .blur-mask {
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent);
+    mask-image: linear-gradient(to bottom, black 70%, transparent);
+  }
 }

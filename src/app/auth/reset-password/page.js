@@ -1,23 +1,34 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ResetPassword from "../../../components/Auth/ResetPassword";
 import { toast } from "react-toastify";
+import useAuthStore from "../../../stores/useAuthStore";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const urlParams =
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search)
-      : null;
-  const emailParam = urlParams ? urlParams.get("email") : "";
-  const decodedEmail = emailParam ? decodeURIComponent(emailParam) : "";
+  const { resetPassword, isLoading } = useAuthStore();
+
   const [formData, setFormData] = useState({
-    email: decodedEmail,
     password: "",
     confirmPassword: "",
   });
 
+  const [resetToken, setResetToken] = useState("");
+
+  // Get reset token from URL params
+  useEffect(() => {
+    const urlParams =
+      typeof window !== "undefined"
+        ? new URLSearchParams(window.location.search)
+        : null;
+
+    if (urlParams) {
+      const tokenParam = urlParams.get("resetToken");
+      const decodedToken = tokenParam ? decodeURIComponent(tokenParam) : "";
+      setResetToken(decodedToken);
+    }
+  }, []);
 
   const handleFormDataChange = (field, value) => {
     setFormData((prev) => ({
@@ -26,7 +37,7 @@ export default function ResetPasswordPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -39,8 +50,24 @@ export default function ResetPasswordPage() {
       return;
     }
 
-    toast.success("Password reset successful!");
-    router.push("/auth/signin");
+    if (!resetToken) {
+      toast.error(
+        "Reset token not found. Please start the reset process again."
+      );
+      router.push("/auth/forgot-password");
+      return;
+    }
+
+    try {
+      const result = await resetPassword(resetToken, formData.password);
+
+      if (result.success) {
+        toast.success("Password reset successful!");
+        router.push("/auth/signin");
+      }
+    } catch (error) {
+      console.error("Reset password error:", error);
+    }
   };
 
   return (
@@ -49,6 +76,7 @@ export default function ResetPasswordPage() {
         formData={formData}
         onFormDataChange={handleFormDataChange}
         onSubmit={handleSubmit}
+        isLoading={isLoading}
       />
     </>
   );

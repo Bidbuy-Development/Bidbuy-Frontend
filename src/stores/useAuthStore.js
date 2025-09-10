@@ -23,6 +23,10 @@ const useAuthStore = create((set, get) => ({
     email: "",
     password: "",
   },
+  resetData: {
+    email: "",
+    resetToken: "",
+  },
 
   // Actions
   setLoading: (loading) => set({ isLoading: loading }),
@@ -40,6 +44,11 @@ const useAuthStore = create((set, get) => ({
   setLoginData: (data) =>
     set((state) => ({
       loginData: { ...state.loginData, ...data },
+    })),
+
+  setResetData: (data) =>
+    set((state) => ({
+      resetData: { ...state.resetData, ...data },
     })),
 
   // API Calls
@@ -238,6 +247,99 @@ const useAuthStore = create((set, get) => ({
     }
   },
 
+  // Forgot Password - Send reset OTP
+  forgotPassword: async (email) => {
+    set({ isLoading: true });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Reset code sent to your email!");
+        return { success: true, data };
+      } else {
+        toast.error(data.message || "Failed to send reset code");
+        return { success: false, error: data.message };
+      }
+    } catch (error) {
+      console.error("Forgot password error:", error);
+      toast.error("Network error. Please try again.");
+      return { success: false, error: error.message };
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  // Verify Reset OTP
+  verifyResetOTP: async (email, otp) => {
+    set({ isLoading: true });
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/api/auth/verify-reset-otp`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, otp }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("OTP verified successfully!");
+        return { success: true, data };
+      } else {
+        toast.error(data.message || "OTP verification failed");
+        return { success: false, error: data.message };
+      }
+    } catch (error) {
+      console.error("Verify reset OTP error:", error);
+      toast.error("Network error. Please try again.");
+      return { success: false, error: error.message };
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  // Reset Password
+  resetPassword: async (resetToken, newPassword) => {
+    set({ isLoading: true });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ resetToken, newPassword }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Password has been reset successfully!");
+        return { success: true, data };
+      } else {
+        toast.error(data.message || "Password reset failed");
+        return { success: false, error: data.message };
+      }
+    } catch (error) {
+      console.error("Reset password error:", error);
+      toast.error("Network error. Please try again.");
+      return { success: false, error: error.message };
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
   // Clear auth data
   clearAuth: () =>
     set({
@@ -257,6 +359,10 @@ const useAuthStore = create((set, get) => ({
       loginData: {
         email: "",
         password: "",
+      },
+      resetData: {
+        email: "",
+        resetToken: "",
       },
     }),
 
